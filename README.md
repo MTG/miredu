@@ -1,6 +1,6 @@
 miredu
 ======
-*Justin Salamon <justin.salamon@nyu.edu>*
+Written and maintained by: *Justin Salamon <justin.salamon@nyu.edu>*
 
 MIR.EDU is an open source vamp plug-in which implements a basic set of 
 descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
