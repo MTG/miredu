@@ -17,7 +17,3 @@ MIR.EDU is not:
 - highly optimized
 - comprehensive
 - state of the art
-
-contact
-=======
-justin.salamon@nyu.edu
