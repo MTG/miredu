@@ -63,7 +63,7 @@ VAMP_SDK_DIR := ../vamp-plugin-sdk
 ## Xcode 4 command-line tools.
 
 CXX := g++
-CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -Wall -fPIC
+CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -O2 -DNDEBUG -Wall -fPIC
 PLUGIN_EXT := .dylib
 LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list
 

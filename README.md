@@ -38,4 +38,4 @@ Installation
 ============
 
 1. Move the compiled library to your Vamp plug-in folder (you may have to create the Vamp folder is it doesn't exist yet):
-justin$ mv mir-edu.dylib /Library/Audio/Plug-ins/Vamp/mir-edu.dylib
+justin$ mv mir-edu.dylib /Library/Audio/Plug-Ins/Vamp/mir-edu.dylib
