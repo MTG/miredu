@@ -22,7 +22,9 @@ MIR.EDU is not:
 Build
 =====
 
-Currently only instructions buildin under OSX are available. Linux and windows instructions will follow.
+Currently only instructions for building under OSX are available. Linux and windows instructions will follow.
+
+OSX
 
 1. Clone the repository using git:
 justin$ git clone https://github.com/justinsalamon/miredu.git
@@ -37,5 +39,19 @@ justin$ make
 Installation
 ============
 
-1. Move the compiled library to your Vamp plug-in folder (you may have to create the Vamp folder is it doesn't exist yet):
+OSX
+
+If you built the library yourself:
+1. Move the compiled library to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
 justin$ mv mir-edu.dylib /Library/Audio/Plug-Ins/Vamp/mir-edu.dylib
+
+If you're using the pre-compiled library:
+1. Move the pre-compiled library to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
+justin$ mv builds/osx/mir-edu.dylib /Library/Audio/Plug-Ins/Vamp/mir-edu.dylib
+
+Windows
+
+If you're using the pre-compiled library:
+1. Move the pre-compiled library to your 'Vamp Plugins' folder (you may have to create the Vamp folder is it doesn't exist yet):
+32 bit: C:\Program Files\Vamp Plugins\mir-edu.dll
+64 bit: C:\Program Files (x86)\Vamp Plugins\mir-edu.dll
