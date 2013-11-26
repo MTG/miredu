@@ -1,11 +1,7 @@
 
-##  Skeleton Makefile for Vamp plugin builds using command-line tools.
+##  Makefile for Vamp plugin builds using command-line tools.
 ##  This requires GNU make, which is what you get with OS/X, Linux, or
 ##  MinGW/Cygwin on Windows.
-##
-##  Rename this to Makefile, and edit as appropriate.
-##  This Makefile WILL NOT WORK until you have edited it as described
-##  below -- the Makefile as supplied does nothing useful at all!
 ##
 ##  Various sets of options are provided, commented out -- just uncomment
 ##  (remove the '#' characters for) the set that most closely resembles
@@ -14,18 +10,47 @@
 ##  (For Windows builds using MS Visual Studio, start instead with the
 ##  VampExamplePlugins project found in the build directory of the SDK.)
 
+# Source code director
+SRCDIR = src
 
 # Edit this to the base name of your plugin library
 #
-PLUGIN_LIBRARY_NAME := myplugins
+PLUGIN_LIBRARY_NAME := mir-edu
 
 # Edit this to list the .cpp or .c files in your plugin project
 #
-PLUGIN_SOURCES := MyPlugin.cpp plugins.cpp
+PLUGIN_SOURCES := $(SRCDIR)/AttackStartEndTimes.cpp \
+$(SRCDIR)/LogAttackTime.cpp \
+$(SRCDIR)/RMS.cpp \
+$(SRCDIR)/SpecralCrest.cpp \
+$(SRCDIR)/SpectralCentroid.cpp \
+$(SRCDIR)/SpectralFlatness.cpp \
+$(SRCDIR)/SpectralFlux.cpp \
+$(SRCDIR)/SpectralKurtosis.cpp \
+$(SRCDIR)/SpectralRolloff.cpp \
+$(SRCDIR)/SpectralSkewness.cpp \
+$(SRCDIR)/SpectralSlope.cpp \
+$(SRCDIR)/SpectralSpread.cpp \
+$(SRCDIR)/TemporalCentroid.cpp \
+$(SRCDIR)/ZeroCrossingRate.cpp \
+$(SRCDIR)/plugins.cpp
 
 # Edit this to list the .h files in your plugin project
 #
-PLUGIN_HEADERS := MyPlugin.h
+PLUGIN_HEADERS := $(SRCDIR)/AttackStartEndTimes.h \
+$(SRCDIR)/LogAttackTime.h \
+$(SRCDIR)/RMS.h \
+$(SRCDIR)/SpectralCentroid.h \
+$(SRCDIR)/SpectralCrest.h \
+$(SRCDIR)/SpectralFlatness.h \
+$(SRCDIR)/SpectralFlux.h \
+$(SRCDIR)/SpectralKurtosis.h \
+$(SRCDIR)/SpectralRolloff.h \
+$(SRCDIR)/SpectralSkewness.h \
+$(SRCDIR)/SpectralSlope.h \
+$(SRCDIR)/SpectralSpread.h \
+$(SRCDIR)/TemporalCentroid.h \
+$(SRCDIR)/ZeroCrossingRate.h
 
 # Edit this to the location of the Vamp plugin SDK, relative to your
 # project directory
@@ -37,10 +62,10 @@ VAMP_SDK_DIR := ../vamp-plugin-sdk
 ## supporting 10.5 or newer. Use this if you have OS/X 10.7 with the
 ## Xcode 4 command-line tools.
 
-# CXX := g++
-# CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -Wall -fPIC
-# PLUGIN_EXT := .dylib
-# LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list
+CXX := g++
+CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -Wall -fPIC
+PLUGIN_EXT := .dylib
+LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list
 
 
 ## Uncomment these for an OS/X universal binary (PPC and 32- and
@@ -97,5 +122,5 @@ $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT): $(PLUGIN_OBJECTS)
 $(PLUGIN_OBJECTS): $(PLUGIN_HEADERS)
 
 clean:
-	rm -f *.o
+	rm -f $(SRCDIR)/*.o
 

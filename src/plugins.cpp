@@ -1,7 +1,6 @@
 
-// This is a skeleton file for use in creating your own plugin
-// libraries.  Replace MyPlugin and myPlugin throughout with the name
-// of your first plugin class, and fill in the gaps as appropriate.
+// mir.edu vamp library
+// Every descriptor is added to the library as a separate plugin
 
 
 #include <vamp/vamp.h>
