@@ -28,14 +28,18 @@ Currently only instructions for building under OSX are available. Linux and wind
 OSX
 
 1. Clone the repository using git:
+
 ```
 justin$ git clone https://github.com/justinsalamon/miredu.git
 ```
+
 2. Enter the miredu folder:
+
 ```
 justin$ cd miredu
 ```
 3. Build the library using make
+
 ```
 justin$ make
 ```
