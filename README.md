@@ -52,7 +52,8 @@ If you built the library yourself:
 
 1. Copy the compiled library (mir-edu.dylib) and metadata files (mir-edu.cat and mir-edu.n3) to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
 ```
-justin$ cd miredu  
+justin$ cd miredu
+```
 justin$ cp mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
 ```
 
