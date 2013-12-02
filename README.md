@@ -28,16 +28,19 @@ Currently only instructions for building under OSX are available. Linux and wind
 OSX
 
 1. Clone the repository using git:
+
 ```
 justin$ git clone https://github.com/justinsalamon/miredu.git
 ```
 
 2. Enter the miredu folder:
+
 ```
 justin$ cd miredu
 ```
 
 3. Build the library using make
+
 ```
 justin$ make
 ```
@@ -51,16 +54,16 @@ OSX
 If you built the library yourself:
 
 1. Copy the compiled library (mir-edu.dylib) and metadata files (mir-edu.cat and mir-edu.n3) to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
+
 ```
 justin$ cd miredu
-```
-```
 justin$ cp mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
 ```
 
 If you're using the pre-compiled library:
 
 1. Copy the pre-compiled library (builds/osx/mir-edu.dylib) and metadata files (mir-edu.cat and mir-edu.n3) to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
+
 ```
 justin$ cd miredu  
 justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/mir-edu.dylib
