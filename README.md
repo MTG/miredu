@@ -54,6 +54,7 @@ If you built the library yourself:
 ```
 justin$ cd miredu
 ```
+```
 justin$ cp mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
 ```
 
