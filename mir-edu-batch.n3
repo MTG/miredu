@@ -1,0 +1,114 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix vamp:     <http://purl.org/ontology/vamp/> .
+@prefix plugbase: <http://www.justinsalamon.com/mir-edu#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix dc:       <http://purl.org/dc/elements/1.1/> .
+@prefix af:       <http://purl.org/ontology/af/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix cc:       <http://web.resource.org/cc/> .
+@prefix :         <#> .
+
+:transform0 a vamp:Transform; 
+	vamp:plugin plugbase:rms; 
+	vamp:output plugbase:rms_output_rms; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform1 a vamp:Transform; 
+	vamp:plugin plugbase:zerocrossingrate; 
+	vamp:output plugbase:zerocrossingrate_output_zerocrossingrate; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+
+:transform2 a vamp:Transform; 
+	vamp:plugin plugbase:spectralcentroid; 
+	vamp:output plugbase:spectralcentroid_output_spectralcentroid; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform3 a vamp:Transform; 
+	vamp:plugin plugbase:spectralspread; 
+	vamp:output plugbase:spectralspread_output_spectralspread; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform4 a vamp:Transform; 
+	vamp:plugin plugbase:spectralskewness; 
+	vamp:output plugbase:spectralskewness_output_spectralskewness; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform5 a vamp:Transform; 
+	vamp:plugin plugbase:spectralkurtosis; 
+	vamp:output plugbase:spectralkurtosis_output_spectralkurtosis; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform6 a vamp:Transform; 
+	vamp:plugin plugbase:spectralrolloff; 
+	vamp:output plugbase:spectralrolloff_output_spectralrolloff; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform7 a vamp:Transform; 
+	vamp:plugin plugbase:spectralflatness; 
+	vamp:output plugbase:spectralflatness_output_spectralflatness; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform8 a vamp:Transform; 
+	vamp:plugin plugbase:spectralcrest; 
+	vamp:output plugbase:spectralcrest_output_spectralcrest; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform9 a vamp:Transform; 
+	vamp:plugin plugbase:spectralflux; 
+	vamp:output plugbase:spectralflux_output_spectralflux; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform10 a vamp:Transform; 
+	vamp:plugin plugbase:temporalcentroid; 
+	vamp:output plugbase:temporalcentroid_output_temporalcentroid; 
+	vamp:step_size "128"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform11 a vamp:Transform; 
+	vamp:plugin plugbase:logattacktime; 
+	vamp:output plugbase:logattacktime_output_logattacktime; 
+	vamp:step_size "64"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .
+	
+:transform12 a vamp:Transform; 
+	vamp:plugin plugbase:attackstartendtimes; 
+	vamp:output plugbase:attackstartendtimes_output_attackstartendtimes; 
+	vamp:step_size "64"; 
+	vamp:block_size "1024"; 
+	vamp:sample_rate "0";      # This just means "use the audio file rate" 
+	vamp:window_type "Hanning" .

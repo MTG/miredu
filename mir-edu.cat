@@ -1,0 +1,13 @@
+vamp:mir-edu:rms::Low Level
+vamp:mir-edu:zerocrossingrate::Low Level
+vamp:mir-edu:spectralcentroid::Low Level
+vamp:mir-edu:spectralspread::Low Level
+vamp:mir-edu:spectralskewness::Low Level
+vamp:mir-edu:spectralkurtosis::Low Level
+vamp:mir-edu:spectralrolloff::Low Level
+vamp:mir-edu:spectralflatness::Low Level
+vamp:mir-edu:spectralcrest::Low Level
+vamp:mir-edu:spectralflux::Low Level
+vamp:mir-edu:temporalcentroid::Low Level
+vamp:mir-edu:logattacktime::Low Level
+vamp:mir-edu:attackstartendtimes::Low Level

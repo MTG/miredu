@@ -1,0 +1,372 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix vamp:     <http://purl.org/ontology/vamp/> .
+@prefix plugbase: <http://www.justinsalamon.com/mir-edu#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix dc:       <http://purl.org/dc/elements/1.1/> .
+@prefix af:       <http://purl.org/ontology/af/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix cc:       <http://web.resource.org/cc/> .
+@prefix :         <#> .
+
+<>  a   vamp:PluginDescription ;
+    foaf:maker          <http://www.justinsalamon.com/> ;
+    foaf:maker          <http://www.vamp-plugins.org/doap.rdf#template-generator> ;
+    foaf:primaryTopic   <http://www.justinsalamon.com/mir-edu> .
+
+:mir-edu a  vamp:PluginLibrary ;
+    vamp:identifier "mir-edu"  ; 
+    vamp:available_plugin plugbase:attackstartendtimes ; 
+    vamp:available_plugin plugbase:logattacktime ; 
+    vamp:available_plugin plugbase:rms ; 
+    vamp:available_plugin plugbase:spectralcentroid ; 
+    vamp:available_plugin plugbase:spectralcrest ; 
+    vamp:available_plugin plugbase:spectralflatness ; 
+    vamp:available_plugin plugbase:spectralflux ; 
+    vamp:available_plugin plugbase:spectralkurtosis ; 
+    vamp:available_plugin plugbase:spectralrolloff ; 
+    vamp:available_plugin plugbase:spectralskewness ; 
+    vamp:available_plugin plugbase:spectralspread ; 
+    vamp:available_plugin plugbase:temporalcentroid ; 
+    vamp:available_plugin plugbase:zerocrossingrate ; 
+#   foaf:page <Place more-information HTML page URL here and uncomment> ;
+    .
+
+plugbase:attackstartendtimes a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Attack Start/End Times" ;
+    vamp:name             "MIR.EDU: Attack Start/End Times" ;
+    dc:description        """Compute the start and end times of the attack of the signal. The start and end times of the attack are computed according to Peeters (2004), see code/documentation for further details. NOTE: the accuracy of the estimation depends on the step (hop) size of the analysis, the smaller the better. The times are returned as timestamps without any values.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "attackstartendtimes" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:TimeDomain ;
+    vamp:output      plugbase:attackstartendtimes_output_attackstartendtimes ;
+    .
+plugbase:attackstartendtimes_output_attackstartendtimes a  vamp:SparseOutput ;
+    vamp:identifier       "attackstartendtimes" ;
+    dc:title              "Attack Start/End Times" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        0 ;
+    vamp:sample_type      vamp:VariableSampleRate ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:logattacktime a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Log Attack Time" ;
+    vamp:name             "MIR.EDU: Log Attack Time" ;
+    dc:description        """Compute the logarithm (base 10) of the duration of the attack of the signal (unit: log10(seconds)). The start and end times of the attack are computed according to Peeters (2004), see code/documentation for further details. NOTE: the accuracy of the estimation depends on the step (hop) size of the analysis, the smaller the better. The the timestamp of the returned value is the start time of the attack. For visualising the attack start and end times use the 'Attack Start/End Times' plug-in.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "logattacktime" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:TimeDomain ;
+    vamp:output      plugbase:logattacktime_output_logattacktime ;
+    .
+plugbase:logattacktime_output_logattacktime a  vamp:SparseOutput ;
+    vamp:identifier       "logattacktime" ;
+    dc:title              "Log Attack Time" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "log10(s)" ;
+    vamp:bin_count        1 ;
+    vamp:sample_type      vamp:VariableSampleRate ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:rms a   vamp:Plugin ;
+    dc:title              "MIR.EDU: RMS" ;
+    vamp:name             "MIR.EDU: RMS" ;
+    dc:description        """Compute the root mean square of the signal for each frame""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "rms" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:TimeDomain ;
+    vamp:output      plugbase:rms_output_rms ;
+    .
+plugbase:rms_output_rms a  vamp:DenseOutput ;
+    vamp:identifier       "rms" ;
+    dc:title              "RMS" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralcentroid a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Centroid" ;
+    vamp:name             "MIR.EDU: Spectral Centroid" ;
+    dc:description        """Compute the spectral centroid of the signal for each frame. The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralcentroid" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralcentroid_output_spectralcentroid ;
+    .
+plugbase:spectralcentroid_output_spectralcentroid a  vamp:DenseOutput ;
+    vamp:identifier       "spectralcentroid" ;
+    dc:title              "Spectral Centroid" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "Hz" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralcrest a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Crest" ;
+    vamp:name             "MIR.EDU: Spectral Crest" ;
+    dc:description        """Compute the spectral crest of the signal for each frame. The crest is defined as the ratio between the maximum spectral magnitude in the frame and the arithmetical mean of the spectral magnitudes. The minimum possible value is 1 (flat spectrum) and it increases the peakier the spectrum is. If the frame is completely silent a value of 1 (flat spectrum) is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralcrest" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralcrest_output_spectralcrest ;
+    .
+plugbase:spectralcrest_output_spectralcrest a  vamp:DenseOutput ;
+    vamp:identifier       "spectralcrest" ;
+    dc:title              "Spectral Crest" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralflatness a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Flatness" ;
+    vamp:name             "MIR.EDU: Spectral Flatness" ;
+    dc:description        """Compute the spectral flatness of the signal for each frame. The flatness is defined as the ratio of the geometric and arithmetical means of the spectral magnitudes. The values returned range between 0 (peaky spectrum) and 1 (flat spectrum). If the frame is completely silent a value of 1 (flat spectrum) is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralflatness" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralflatness_output_spectralflatness ;
+    .
+plugbase:spectralflatness_output_spectralflatness a  vamp:DenseOutput ;
+    vamp:identifier       "spectralflatness" ;
+    dc:title              "Spectral Flatness" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralflux a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Flux" ;
+    vamp:name             "MIR.EDU: Spectral Flux" ;
+    dc:description        """Compute the spectral flux between every two consecutive frames of the signal. The flux is defined as 1 minus the normalized correlation between successive magnitude spectra. The values returned range between 0 (no change) and 1 (maximum change). For the first frame the flux is always zero. If both frames are silent flux = 0, if only one is silent flux = 1.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralflux" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralflux_output_spectralflux ;
+    .
+plugbase:spectralflux_output_spectralflux a  vamp:DenseOutput ;
+    vamp:identifier       "spectralflux" ;
+    dc:title              "Spectral Flux" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralkurtosis a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Kurtosis" ;
+    vamp:name             "MIR.EDU: Spectral Kurtosis" ;
+    dc:description        """Compute the spectral kurtosis of the signal for each frame. The kurtosis is a measure of the peakedness of a distribution. For a gaussian distribution kurtosis = 3, for a flat distribution kurtosis < 3 and for a peakier distribution kurtosis > 3.If the frame is completely silent a value of 0 is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralkurtosis" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralkurtosis_output_spectralkurtosis ;
+    .
+plugbase:spectralkurtosis_output_spectralkurtosis a  vamp:DenseOutput ;
+    vamp:identifier       "spectralkurtosis" ;
+    dc:title              "Spectral Kurtosis" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralrolloff a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Roll-off" ;
+    vamp:name             "MIR.EDU: Spectral Roll-off" ;
+    dc:description        """Compute the spectral roll-off of the signal for each frame, defined as the frequency below which 95% of the signal energy is contained. The threshold (95%) is defined as a paramtere that can be changed by the user. The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralrolloff" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+
+    vamp:parameter   plugbase:spectralrolloff_param_rolloffthreshold ;
+
+    vamp:output      plugbase:spectralrolloff_output_spectralrolloff ;
+    .
+plugbase:spectralrolloff_param_rolloffthreshold a  vamp:QuantizedParameter ;
+    vamp:identifier     "rolloffthreshold" ;
+    dc:title            "Roll-off threshold" ;
+    dc:format           "" ;
+    vamp:min_value       0 ;
+    vamp:max_value       100 ;
+    vamp:unit           "" ;
+    vamp:quantize_step   1  ;
+    vamp:default_value   95 ;
+    vamp:value_names     ();
+    .
+plugbase:spectralrolloff_output_spectralrolloff a  vamp:DenseOutput ;
+    vamp:identifier       "spectralrolloff" ;
+    dc:title              "Spectral Rolloff" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "Hz" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralskewness a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Skewness" ;
+    vamp:name             "MIR.EDU: Spectral Skewness" ;
+    dc:description        """Compute the spectral skewness of the signal for each frame. If the frame is completely silent a value of 0 is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralskewness" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralskewness_output_spectralskewness ;
+    .
+plugbase:spectralskewness_output_spectralskewness a  vamp:DenseOutput ;
+    vamp:identifier       "spectralskewness" ;
+    dc:title              "Spectral Skewness" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:spectralspread a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Spectral Spread" ;
+    vamp:name             "MIR.EDU: Spectral Spread" ;
+    dc:description        """Compute the spectral spread of the signal for each frame. The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "spectralspread" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:FrequencyDomain ;
+
+    vamp:output      plugbase:spectralspread_output_spectralspread ;
+    .
+plugbase:spectralspread_output_spectralspread a  vamp:DenseOutput ;
+    vamp:identifier       "spectralspread" ;
+    dc:title              "Spectral Spread" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "Hz" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:temporalcentroid a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Temporal Centroid" ;
+    vamp:name             "MIR.EDU: Temporal Centroid" ;
+    dc:description        """Compute the temporal centroid of the entire signal, which is the centre of gravity of the energy of the signal. Energy is represented by the RMS of the signal. The termporal centroid is computed between times n1 and n2 which are the first and last times the signal RMS is above 15% of its maximum value. The temporal centroid is returned as a timestamp with no corresponding value.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "temporalcentroid" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:TimeDomain ;
+    vamp:output      plugbase:temporalcentroid_output_temporalcentroid ;
+    .
+plugbase:temporalcentroid_output_temporalcentroid a  vamp:SparseOutput ;
+    vamp:identifier       "temporalcentroid" ;
+    dc:title              "Temporal Centroid" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "" ;
+    vamp:bin_count        0 ;
+    vamp:sample_type      vamp:VariableSampleRate ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+plugbase:zerocrossingrate a   vamp:Plugin ;
+    dc:title              "MIR.EDU: Zero Crossing Rate" ;
+    vamp:name             "MIR.EDU: Zero Crossing Rate" ;
+    dc:description        """Compute the zero crossing rate of the signal for each frame (i.e. the number of times the signal changes sign). The unit of the values returned is crossings/second.""" ;
+    foaf:maker            [ foaf:name "MIR.EDU by Justin Salamon" ] ; # FIXME could give plugin author's URI here
+    dc:rights             """GPL. Plugin by Justin Salamon""" ;
+#   cc:license            <Place plugin license URI here and uncomment> ; 
+    vamp:identifier       "zerocrossingrate" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "1" ;
+    vamp:input_domain     vamp:TimeDomain ;
+    vamp:output      plugbase:zerocrossingrate_output_zerocrossingrate ;
+    .
+plugbase:zerocrossingrate_output_zerocrossingrate a  vamp:DenseOutput ;
+    vamp:identifier       "zerocrossingrate" ;
+    dc:title              "Zero Crossing Rate" ;
+    dc:description        """"""  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "Crossings/s" ;
+    vamp:bin_count        1 ;
+#   vamp:computes_event_type   <Place event type URI here and uncomment> ;
+#   vamp:computes_feature      <Place feature attribute URI here and uncomment> ;
+#   vamp:computes_signal_type  <Place signal type URI here and uncomment> ;
+    .
+
