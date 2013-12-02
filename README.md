@@ -32,13 +32,11 @@ OSX
 ```
 justin$ git clone https://github.com/justinsalamon/miredu.git
 ```
-
 2. Enter the miredu folder:
 
 ```
 justin$ cd miredu
 ```
-
 3. Build the library using make
 
 ```
