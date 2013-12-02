@@ -3,8 +3,8 @@ MIR.EDU
 
 Written and maintained by:  
 Justin Salamon  
-<justin.salamon@nyu.edu>  
-www.justinsalamon.com
+email: <justin.salamon@nyu.edu>  
+web: www.justinsalamon.com
 
 MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
 descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
