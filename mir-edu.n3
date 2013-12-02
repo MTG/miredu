@@ -29,7 +29,7 @@
     vamp:available_plugin plugbase:spectralspread ; 
     vamp:available_plugin plugbase:temporalcentroid ; 
     vamp:available_plugin plugbase:zerocrossingrate ; 
-#   foaf:page <Place more-information HTML page URL here and uncomment> ;
+    foaf:page <http://github.com/justinsalamon/miredu> ;
     .
 
 plugbase:attackstartendtimes a   vamp:Plugin ;
