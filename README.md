@@ -1,8 +1,6 @@
 MIR.EDU
 =======
 
-MIR.EDU
-
 A vamp plug-in library for teaching MIR.
 Copyright (C) 2013 Justin Salamon.
 
@@ -19,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
+<br/>
 Written and maintained by:  
 Justin Salamon  
 email: <justin.salamon@nyu.edu>  
