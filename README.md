@@ -17,11 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-<br/>
-Written and maintained by:  
+CONTACT
+=======
+
+MIR.EDU is written and maintained by:  
 Justin Salamon  
 email: <justin.salamon@nyu.edu>  
 web: www.justinsalamon.com
+
+DESCRIPTION
+===========
 
 MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
 descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
@@ -39,7 +44,7 @@ MIR.EDU is not:
 - comprehensive
 - state of the art
 
-Build
+BUILD
 =====
 
 Currently only instructions for building under OSX are available. Linux and windows instructions will follow.
@@ -60,7 +65,7 @@ justin$ make
 ```
 
 
-Installation
+INSTALLATION
 ============
 
 OSX
