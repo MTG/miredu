@@ -1,19 +1,40 @@
+/*
+    MIR.EDU
 
-/* MIR.EDU vamp library
- *
- * Feature name: Spectral Flux
- * Description: Compute the spectral flux between evey 2 consecutive frames of the signal.
- * The flux is measured between the current frame and the previous one, so fo the first 
- * frame the flux is always zero.
- * The spectral flux, defined as the difference between the spectral magnitude
- * of every 2 consecutive frames, can be calculated in various ways. This implementation
- * follows the one proposed in the reference mentioned below, i.e. the difference is 
- * defined as 1 minus the normalised correlation between successive magnitude spectra.
- * NOTE: we do NOT use the L2-norm (Euclidian distance)
- * NOTE 2: the spectral magnitudes are not normalised
- * NOTE 3: if both frames are silent flux = 0, if only one is silent flux = 1.
- * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
- * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+    A vamp plug-in library for teaching MIR.
+    Copyright (C) 2013 Justin Salamon.
+
+    This file is part of MIR.EDU
+
+    MIR.EDU is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MIR.EDU is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Feature info:
+
+    Feature name: Spectral Flux
+    Description: Compute the spectral flux between evey 2 consecutive frames of the signal.
+    The flux is measured between the current frame and the previous one, so fo the first 
+    frame the flux is always zero.
+    The spectral flux, defined as the difference between the spectral magnitude
+    of every 2 consecutive frames, can be calculated in various ways. This implementation
+    follows the one proposed in the reference mentioned below, i.e. the difference is 
+    defined as 1 minus the normalised correlation between successive magnitude spectra.
+    NOTE: we do NOT use the L2-norm (Euclidian distance)
+    NOTE 2: the spectral magnitudes are not normalised
+    NOTE 3: if both frames are silent flux = 0, if only one is silent flux = 1.
+    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
+    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
  */
 
 // Remember to use a different guard symbol in each header!

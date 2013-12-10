@@ -1,15 +1,36 @@
+/*
+    MIR.EDU
 
-/* MIR.EDU vamp library
- *
- * Feature name: Attack Start/End Times
- * Description: Compute the start and end times of the attack of the signal.
- * Unit: time (seconds)
- * Formula: See reference.
- * NOTE: the values are returned as timestamps.
- * NOTE 2: the accuracy of the estimation depends on the step (hop) size of the analysis, the
- * smaller the better.
- * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
- * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+    A vamp plug-in library for teaching MIR.
+    Copyright (C) 2013 Justin Salamon.
+
+    This file is part of MIR.EDU
+
+    MIR.EDU is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MIR.EDU is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Feature info:
+ 
+    Feature name: Attack Start/End Times
+    Description: Compute the start and end times of the attack of the signal.
+    Unit: time (seconds)
+    Formula: See reference.
+    NOTE: the values are returned as timestamps.
+    NOTE 2: the accuracy of the estimation depends on the step (hop) size of the analysis, the
+    smaller the better.
+    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
+    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
  */
 
 

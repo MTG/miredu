@@ -1,18 +1,39 @@
+/*
+    MIR.EDU
 
-/* MIR.EDU vamp library
- *
- * Feature name: Spectral Skewness
- * Description: Compute the spectral skewness of each frame of the signal.
- * If a frame is completely silent, a value of 0 is returned.
- * Unit: none
- * Formula: the third standardized moment:
- * skewness = (sum( (f_i - c)^3 * m_i ) / sum (m_i))  /  (spread^3)
- * where f_i are frequencies in Hz and m_i are their respective
- * spectrak magnitudes, and c is the centroid given by:
- * c = sum(f_i * m_i) / sum(m_i)
- * and spread is the spectral spread (i.e. wieghted std. deviation) given
- * by spread = sqrt( sum( (f_i - c)^2 * m_i ) / sum (m_i) )
- * Reference:
+    A vamp plug-in library for teaching MIR.
+    Copyright (C) 2013 Justin Salamon.
+
+    This file is part of MIR.EDU
+
+    MIR.EDU is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MIR.EDU is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Feature info:
+ 
+    Feature name: Spectral Skewness
+    Description: Compute the spectral skewness of each frame of the signal.
+    If a frame is completely silent, a value of 0 is returned.
+    Unit: none
+    Formula: the third standardized moment:
+    skewness = (sum( (f_i - c)^3 * m_i ) / sum (m_i))  /  (spread^3)
+    where f_i are frequencies in Hz and m_i are their respective
+    spectrak magnitudes, and c is the centroid given by:
+    c = sum(f_i * m_i) / sum(m_i)
+    and spread is the spectral spread (i.e. wieghted std. deviation) given
+    by spread = sqrt( sum( (f_i - c)^2 * m_i ) / sum (m_i) )
+    Reference:
  */
 
 // Remember to use a different guard symbol in each header!

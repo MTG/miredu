@@ -1,19 +1,40 @@
+/*
+    MIR.EDU
 
-/* MIR.EDU vamp library
- *
- * Feature name: Temporal Centroid
- * Description: Compute the temporal centroid, which is the centre of gravity
- * of the signal energy.
- * NOTE: we use the RMS to represent the signal energy.
- * Unit: time (seconds)
- * Formula: temporalcentroid = sum (t_i * e_i) / sum (e_i)
- * where t_i is the time at frame i, and e_i is the energy at frame i.
- * NOTE 2: we only compute the temporal centroid between times n1 and n2,
- * which are the first and last times the signal RMS is above 15% of its
- * maximum value.
- * NOTE 3: the temporal centroid is returned as a timestamp with no corresponding value.
- * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
- * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+    A vamp plug-in library for teaching MIR.
+    Copyright (C) 2013 Justin Salamon.
+
+    This file is part of MIR.EDU
+
+    MIR.EDU is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MIR.EDU is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Feature info:
+ 
+    Feature name: Temporal Centroid
+    Description: Compute the temporal centroid, which is the centre of gravity
+    of the signal energy.
+    NOTE: we use the RMS to represent the signal energy.
+    Unit: time (seconds)
+    Formula: temporalcentroid = sum (t_i * e_i) / sum (e_i)
+    where t_i is the time at frame i, and e_i is the energy at frame i.
+    NOTE 2: we only compute the temporal centroid between times n1 and n2,
+    which are the first and last times the signal RMS is above 15% of its
+    maximum value.
+    NOTE 3: the temporal centroid is returned as a timestamp with no corresponding value.
+    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
+    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
  */
 
 

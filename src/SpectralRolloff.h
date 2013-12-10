@@ -1,17 +1,38 @@
+/*
+    MIR.EDU
 
-/* MIR.EDU vamp library
- *
- * Feature name: Spectral Roll-off
- * Description: Compute the spectral roll-off of each frame of the signal,
- * defined as the frequency f_r below which 95% percent of the
- * signal energy is contrained. Note, we define this threshold as
- * a parameter that the user can change. The default value is 95%.
- * If a frame is completely silent, a value of 0 is returned.
- * Unit: Hz
- * Formula: f_r, where sum(a_i^2) from f_0..f_r = 0.95 * sum(a_i^2) from f_1 to f_N
- * where i=1..N
- * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
- * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+    A vamp plug-in library for teaching MIR.
+    Copyright (C) 2013 Justin Salamon.
+
+    This file is part of MIR.EDU
+
+    MIR.EDU is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MIR.EDU is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Feature info:
+ 
+    Feature name: Spectral Roll-off
+    Description: Compute the spectral roll-off of each frame of the signal,
+    defined as the frequency f_r below which 95% percent of the
+    signal energy is contrained. Note, we define this threshold as
+    a parameter that the user can change. The default value is 95%.
+    If a frame is completely silent, a value of 0 is returned.
+    Unit: Hz
+    Formula: f_r, where sum(a_i^2) from f_0..f_r = 0.95 * sum(a_i^2) from f_1 to f_N
+    where i=1..N
+    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
+    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
  */
 
 

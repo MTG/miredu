@@ -1,11 +1,32 @@
+/*
+    MIR.EDU
 
-/* MIR.EDU vamp library
- *
- * Feature name: Zero Crossing Rate
- * Description: Compute the zero crossing rate of the signal in each frame.
- * Unit: crossings/second
- * Formula: See reference. We consider >=0 as positive, <0 as negative.
- * Reference: http://en.wikipedia.org/wiki/Zero-crossing_rate
+    A vamp plug-in library for teaching MIR.
+    Copyright (C) 2013 Justin Salamon.
+
+    This file is part of MIR.EDU
+
+    MIR.EDU is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    MIR.EDU is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    Feature info:
+ 
+    Feature name: Zero Crossing Rate
+    Description: Compute the zero crossing rate of the signal in each frame.
+    Unit: crossings/second
+    Formula: See reference. We consider >=0 as positive, <0 as negative.
+    Reference: http://en.wikipedia.org/wiki/Zero-crossing_rate
  */
 
 
