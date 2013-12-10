@@ -51,7 +51,10 @@ Currently only instructions for building under OSX are available. Linux and wind
 
 OSX
 
-1. Clone the repository using git:  
+First you need to download and build the Vamp plugin SDK, by following the instructions provided here:
+<http://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/wiki/mtp1#1-Download-and-build-the-SDK>. Remember to rename the SDK folder to vamp-plugin-sdk (i.e. remove the version number from the folder name). Then, from the same folder where you have the vamp SDK, follow these instructions (i.e. if the SDK is at ```~/Documents/dev/vamp-plugin-sdk```, you should start at ```~/Documents/dev/```:
+
+1. Clone the MIR.EDU repository using git:  
 ```
 justin$ git clone https://github.com/justinsalamon/miredu.git  
 ```
