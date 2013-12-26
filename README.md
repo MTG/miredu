@@ -88,7 +88,7 @@ If you're using the pre-compiled library:
 
 ```
 justin$ cd miredu  
-justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/mir-edu.dylib
+justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
 ```
 
 Windows
