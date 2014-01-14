@@ -17,11 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-<br/>
-Written and maintained by:  
+CONTACT
+=======
+
+MIR.EDU is written and maintained by:  
 Justin Salamon  
 email: <justin.salamon@nyu.edu>  
 web: www.justinsalamon.com
+
+DESCRIPTION
+===========
 
 MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
 descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
@@ -39,14 +44,17 @@ MIR.EDU is not:
 - comprehensive
 - state of the art
 
-Build
+BUILD
 =====
 
 Currently only instructions for building under OSX are available. Linux and windows instructions will follow.
 
 OSX
 
-1. Clone the repository using git:  
+First you need to download and build the Vamp plugin SDK, by following the instructions provided here:
+<http://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/wiki/mtp1#1-Download-and-build-the-SDK> (remember to rename the SDK folder to 'vamp-plugin-sdk', i.e. remove the version number from the folder name). Then, from the same folder where you placed the Vamp SDK (i.e. if the SDK is at ```~/Documents/dev/vamp-plugin-sdk```, you should start at ```~/Documents/dev/```) follow the instructions below:
+
+1. Clone the MIR.EDU repository using git:  
 ```
 justin$ git clone https://github.com/justinsalamon/miredu.git  
 ```
@@ -61,7 +69,7 @@ justin$ make
 ```
 
 
-Installation
+INSTALLATION
 ============
 
 OSX
@@ -81,7 +89,7 @@ If you're using the pre-compiled library:
 
 ```
 justin$ cd miredu  
-justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/mir-edu.dylib
+justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
 ```
 
 Windows
