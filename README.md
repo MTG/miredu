@@ -2,7 +2,7 @@ MIR.EDU
 =======
 
 A vamp plug-in library for teaching MIR.
-Copyright (C) 2013 Justin Salamon.
+Copyright (C) 2013-2014 Justin Salamon.
 
 MIR.EDU is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
