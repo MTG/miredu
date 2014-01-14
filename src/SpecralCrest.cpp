@@ -80,7 +80,7 @@ SpectralCrest::getCopyright() const
 {
     // This function is not ideally named.  It does not necessarily
     // need to say who made the plugin -- getMaker does that -- but it
-    // should indicate the teSpectralCrest under which it is distributed.  For
+    // should indicate the terms under which it is distributed.  For
     // example, "Copyright (year). All Rights Reserved", or "GPL"
     return "GPL";
 }
