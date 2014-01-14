@@ -1,4 +1,4 @@
-	MIR.EDU
+MIR.EDU
 =======
 
 A vamp plug-in library for teaching MIR.
@@ -55,18 +55,23 @@ First you need to download and build the Vamp plugin SDK, by following the instr
 <http://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/wiki/mtp1#1-Download-and-build-the-SDK> (remember to rename the SDK folder to 'vamp-plugin-sdk', i.e. remove the version number from the folder name). Then, from the same folder where you placed the Vamp SDK (i.e. if the SDK is at ```~/Documents/dev/vamp-plugin-sdk```, you should start at ```~/Documents/dev/```) follow the instructions below:
 
 1. Clone the MIR.EDU repository using git:  
-```
-justin$ git clone https://github.com/justinsalamon/miredu.git  
-```
+	
+	```
+	justin$ git clone https://github.com/justinsalamon/miredu.git  
+	```
+
 2. Enter the miredu folder:  
-```
-justin$ cd miredu
-```
-3. Rename Makefile.osx to Make and build the library:
-```
-justin$ mv Makefile.osx Makefile
-justin$ make
-```
+
+	```
+	justin$ cd miredu
+	```
+
+3. Rename 'Makefile.osx' to 'Make' and build the library:
+
+	```
+	justin$ mv Makefile.osx Makefile
+	justin$ make
+	```
 
 
 INSTALLATION
@@ -78,19 +83,19 @@ If you built the library yourself:
 
 1. Copy the compiled library (mir-edu.dylib) and metadata files (mir-edu.cat and mir-edu.n3) to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
 
-```
-justin$ cd miredu
-justin$ cp mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
-```
+	```
+	justin$ cd miredu
+	justin$ cp mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
+	```
 
 If you're using the pre-compiled library:
 
 1. Copy the pre-compiled library (builds/osx/mir-edu.dylib) and metadata files (mir-edu.cat and mir-edu.n3) to your 'Vamp' plug-ins folder (you may have to create the Vamp folder is it doesn't exist yet):
 
-```
-justin$ cd miredu  
-justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
-```
+	```
+	justin$ cd miredu  
+	justin$ cp builds/osx/mir-edu.dylib mir-edu.cat mir-edu.n3 /Library/Audio/Plug-Ins/Vamp/
+	```
 
 Windows
 
