@@ -1,4 +1,4 @@
-MIR.EDU
+	MIR.EDU
 =======
 
 A vamp plug-in library for teaching MIR.
@@ -54,8 +54,9 @@ justin$ git clone https://github.com/justinsalamon/miredu.git
 ```
 justin$ cd miredu
 ```
-3. Build the library using make  
+3. Rename Makefile.osx to Make and build the library:
 ```
+justin$ mv Makefile.osx Makefile
 justin$ make
 ```
 
