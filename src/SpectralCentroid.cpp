@@ -2,7 +2,7 @@
     MIR.EDU
 
     A vamp plug-in library for teaching MIR.
-    Copyright (C) 2013 Justin Salamon.
+    Copyright (C) 2013-2014 Justin Salamon.
 
     This file is part of MIR.EDU
 
