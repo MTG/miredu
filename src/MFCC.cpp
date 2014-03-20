@@ -36,13 +36,14 @@ MFCC::MFCC(float inputSampleRate) :
     m_stepSize(0),
     m_minFreq(0),
     m_maxFreq(inputSampleRate / 2.0),
-    m_nFilters(26)
+    m_nFilters(40),
+    m_nCoeffs(20),
+    m_useEnergy(true)
 {
 }
 
 MFCC::~MFCC()
-{
-}
+{}
 
 string
 MFCC::getIdentifier() const
@@ -228,12 +229,12 @@ MFCC::initialise(size_t channels, size_t stepSize, size_t blockSize)
     // Generate mel filterbanks
     m_filterbank = get_filterbanks(m_nFilters, m_blockSize, m_inputSampleRate, m_minFreq, m_maxFreq);
     
-    /*
+    /* DEBUG
     cout << "[";
     for (int i=0; i<m_nFilters; i++)
     {
         cout << m_filterbank[i][0];
-        for (int j=1; j<m_blockSize/2; j++)
+        for (int j=1; j<(int)m_filterbank[i].size(); j++)
             cout << "," << m_filterbank[i][j];
         cout << ";";
     }
@@ -245,19 +246,17 @@ MFCC::initialise(size_t channels, size_t stepSize, size_t blockSize)
 
 void
 MFCC::reset()
-{
-    // Clear buffers, reset stored values, etc
-}
+{}
 
 MFCC::FeatureSet
 MFCC::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Do actual work!
-    vector<float> power_spectrum(m_blockSize/2);
+    vector<float> power_spectrum(m_blockSize/2 + 1);
     float energy = 0;
 
     // STEP 1: compute the periodogram estimate of the power spectrum 
-    for (size_t i=0; i<m_blockSize; i+=2)
+    for (size_t i=0; i<m_blockSize+2; i+=2)
     {
         float breal = inputBuffers[0][i];
         float bimag = inputBuffers[0][i+1];
@@ -265,12 +264,33 @@ MFCC::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
         energy += power_spectrum[i/2];
     }
 
-    // STEP 2: Apply mel filterbank (see initialize function for filterbank generation!)
-       
+    // STEP 2: Apply mel filterbank (see initialize function for filterbank generation)
+    // This involves computing the dot product of the spectrum with each filter
+    vector<float> energy_features(m_nFilters,0);
+    for (size_t i=0; i<m_nFilters; i++)
+        for (size_t j=0; j<m_blockSize/2+1; j++)
+            energy_features[i] += power_spectrum[j] * m_filterbank[i][j];
 
+    // STEP 3: Take the log of the features
+    for (size_t i=0; i<m_nFilters; i++) {
+        // add epsilon to avoid log(0) for silent frames
+        energy_features[i] = log(energy_features[i] + std::numeric_limits<double>::epsilon()); 
+    }
+
+    // STEP 4: Compute the Discrete Cosine Transform (DCT) of the log energy features
+    energy_features = dct(energy_features);
+
+    // STEP 5: optionally apply liftering
+
+    // STEP 6: optionally replace coeff0 with log of frame energy
+    if (m_useEnergy)
+        energy_features[0] = log(energy + std::numeric_limits<double>::epsilon());
+
+    // STEP 7: return the desired number of coefficients
     Feature f;
     f.hasTimestamp = false;
-    f.values.push_back(0);
+    for (size_t k=0; k<m_nCoeffs; k++)
+        f.values.push_back(energy_features[k]);
 
     FeatureSet fs;
     fs[0].push_back(f);
@@ -332,21 +352,16 @@ MFCC::get_filterbanks(int nfilt, int nfft, float samplerate, float lowfreq, floa
     vector<float> melpoints(nfilt + 2);
     for (int i=0; i<(int)melpoints.size(); i++) {
         melpoints[i] = lowmel + i * melstep; 
-        //cout << melpoints[i] << " ";
     }
-    // cout << endl;
         
     // our points are in Mels, but we use fft bins, so we have to convert
     // from mel to Hz to fft bin number
     for (int i=0; i<(int)melpoints.size(); i++) {
         //melpoints[i] = round(mel2hz(melpoints[i]) * nfft / samplerate);
         melpoints[i] = floor(mel2hz(melpoints[i]) * (nfft+1) / samplerate);
-        //cout << melpoints[i] << " ";
     }
-    // cout << endl;
 
-    vector< vector<float> > filterbank(nfilt,vector<float>(nfft/2));
-    // cout << filterbank.size() << " " << filterbank[0].size() << endl;
+    vector< vector<float> > filterbank(nfilt,vector<float>(nfft/2+1));
     for (int j=0; j<nfilt; j++)
     {
         // Create first half of triangle
@@ -360,3 +375,34 @@ MFCC::get_filterbanks(int nfilt, int nfft, float samplerate, float lowfreq, floa
 
     return filterbank;     
 }
+
+/**
+ * Very basic (and inefficient) implementation of the discrete cosine transform (type II)
+ */
+vector<float>
+MFCC::dct(vector<float> x)
+{
+    const float PI_F=3.14159265358979f; // hello PI :)
+
+    int N = (int)x.size();
+
+    // Initialize all coefficients to 0
+    vector<float> dct_coeff(N,0);
+
+    // Compute DCT using the following formula:
+    // k = 0 .. N-1 (where N = size of x)
+    // y(k) = w(k) * Sum_(n=0...N-1) x(n)cos(pi(2n+1)k/(2N)) where
+    // w(k) = 1/sqrt(N) if k=0, 
+    // w(k) = sqrt(2/N) if 1 <= k <= N-1
+    for (int k=0; k<N; k++)
+        for (int n=0; n<N; n++)
+            dct_coeff[k] += x[n] * cos(PI_F * (2*n+1) * k / (2*N));
+
+    dct_coeff[0] *= 1.0 / sqrt(float(N));
+    for (int k=1; k<N; k++)
+        dct_coeff[k] *= sqrt(2.0/float(N));
+
+    return dct_coeff;
+}
+
+

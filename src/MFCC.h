@@ -89,14 +89,17 @@ protected:
     float hz2mel(float hz);
     float mel2hz(float mel);
     vector< vector<float> > get_filterbanks(int nfilt, int nfft, float samplerate, float lowfreq, float highfreq);
+    vector<float> dct(vector<float> x);
 
     // plugin-specific data and methods go here
     size_t m_blockSize;
     size_t m_stepSize;
 
-    float m_minFreq;
-    float m_maxFreq;
-    size_t m_nFilters;
+    float m_minFreq; // minimum frequency to use in MFCC computation
+    float m_maxFreq; // maximum frequency to use in MFCC computation
+    size_t m_nFilters; // number of mel filters to use
+    size_t m_nCoeffs; // number of MFCC coefficients to return (default = 13)
+    bool m_useEnergy; // whether to replace coeff0 with log of the true energy of the frame (true) or not (false)
 
     vector< vector<float> > m_filterbank;
 };
