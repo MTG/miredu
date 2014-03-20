@@ -57,7 +57,10 @@ string
 SpectralCrest::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral crest of the signal for each frame. The crest is defined as the ratio between the maximum spectral magnitude in the frame and the arithmetical mean of the spectral magnitudes. The minimum possible value is 1 (flat spectrum) and it increases the peakier the spectrum is. If the frame is completely silent a value of 1 (flat spectrum) is returned.";
+    return "Compute the spectral crest of the signal for each frame. The crest is defined as the ratio between the "
+    "maximum spectral magnitude in the frame and the arithmetical mean of the spectral magnitudes. The minimum "
+    "possible value is 1 (flat spectrum) and it increases the peakier the spectrum is. If the frame is completely "
+    "silent a value of 1 (flat spectrum) is returned.";
 }
 
 string

@@ -1,5 +1,4 @@
-/*
-    MIR.EDU
+/*     MIR.EDU
 
     A vamp plug-in library for teaching MIR.
     Copyright (C) 2013-2014 Justin Salamon.
@@ -8,7 +7,7 @@
 
     MIR.EDU is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation, either version 3 of the License, or 
     (at your option) any later version.
 
     MIR.EDU is distributed in the hope that it will be useful,
@@ -54,11 +53,14 @@ AttackStartEndTimes::getName() const
     return "MIR.EDU: Attack Start/End Times";
 }
 
-string
-AttackStartEndTimes::getDescription() const
-{
+string 
+AttackStartEndTimes::getDescription() const 
+{     
     // Return something helpful here!
-    return "Compute the start and end times of the attack of the signal. The start and end times of the attack are computed according to Peeters (2004), see code/documentation for further details. NOTE: the accuracy of the estimation depends on the step (hop) size of the analysis, the smaller the better. The times are returned as timestamps without any values.";
+    return "Compute the start and end times of the attack of the signal. The start and end times of the attack are "
+    "computed according to Peeters (2004), see code/documentation for further details. NOTE: the accuracy of the "
+    "estimation depends on the step (hop) size of the analysis, the smaller the better. The times are returned as "
+    "timestamps without any values.";
 }
 
 string

@@ -58,7 +58,9 @@ string
 SpectralRolloff::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral roll-off of the signal for each frame, defined as the frequency below which 95% of the signal energy is contained. The threshold (95%) is defined as a paramtere that can be changed by the user. The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.";
+    return "Compute the spectral roll-off of the signal for each frame, defined as the frequency below which 95% of "
+    "the signal energy is contained. The threshold (95%) is defined as a paramtere that can be changed by the user. "
+    "The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.";
 }
 
 string
@@ -152,7 +154,8 @@ SpectralRolloff::getParameterDescriptors() const
 float
 SpectralRolloff::getParameter(string identifier) const
 {
-    if (identifier == "rolloffthreshold") return m_rolloffthreshold; // return the ACTUAL current value of your parameter here!
+    if (identifier == "rolloffthreshold") 
+        return m_rolloffthreshold;
     
     return 0;
 }

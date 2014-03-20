@@ -57,7 +57,9 @@ string
 SpectralFlatness::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral flatness of the signal for each frame. The flatness is defined as the ratio of the geometric and arithmetical means of the spectral magnitudes. The values returned range between 0 (peaky spectrum) and 1 (flat spectrum). If the frame is completely silent a value of 1 (flat spectrum) is returned.";
+    return "Compute the spectral flatness of the signal for each frame. The flatness is defined as the ratio of the "
+    "geometric and arithmetical means of the spectral magnitudes. The values returned range between 0 (peaky spectrum) "
+    "and 1 (flat spectrum). If the frame is completely silent a value of 1 (flat spectrum) is returned.";
 }
 
 string
@@ -280,7 +282,8 @@ SpectralFlatness::process(const float *const *inputBuffers, Vamp::RealTime times
         float bimag = inputBuffers[0][i+1];
         float mag = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
         mag_sum += mag;
-        mag_log_sum += log(mag); // instead of product compute sum of logs to avoid arithmetic underflow! (numerically safer)
+        // instead of product compute sum of logs to avoid arithmetic underflow! (numerically safer)
+        mag_log_sum += log(mag);
     }
 
     float spectralflatness;

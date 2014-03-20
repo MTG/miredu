@@ -58,7 +58,10 @@ string
 SpectralFlux::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral flux between every two consecutive frames of the signal. The flux is defined as 1 minus the normalized correlation between successive magnitude spectra. The values returned range between 0 (no change) and 1 (maximum change). For the first frame the flux is always zero. If both frames are silent flux = 0, if only one is silent flux = 1.";
+    return "Compute the spectral flux between every two consecutive frames of the signal. The flux is defined as 1 "
+    "minus the normalized correlation between successive magnitude spectra. The values returned range between 0 (no "
+    "change) and 1 (maximum change). For the first frame the flux is always zero. If both frames are silent flux = 0, "
+    "if only one is silent flux = 1.";
 }
 
 string

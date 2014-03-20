@@ -57,7 +57,8 @@ string
 SpectralSkewness::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral skewness of the signal for each frame. If the frame is completely silent a value of 0 is returned.";
+    return "Compute the spectral skewness of the signal for each frame. If the frame is completely silent a value of 0 "
+    "is returned.";
 }
 
 string

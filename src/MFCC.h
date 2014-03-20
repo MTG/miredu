@@ -26,8 +26,10 @@
     Description: Compute the MFCCs of each frame of the signal.
     Unit: 
     Formula: 
-    Reference: http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/
-    Credit: Implementation based on the python mfcc implementation at: https://github.com/jameslyons/python_speech_features/
+    Reference: 
+    http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/
+    Credit: Implementation based on the python mfcc implementation at: 
+    https://github.com/jameslyons/python_speech_features/
  */
 
 

@@ -58,7 +58,11 @@ string
 LogAttackTime::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the logarithm (base 10) of the duration of the attack of the signal (unit: log10(seconds)). The start and end times of the attack are computed according to Peeters (2004), see code/documentation for further details. NOTE: the accuracy of the estimation depends on the step (hop) size of the analysis, the smaller the better. The the timestamp of the returned value is the start time of the attack. For visualising the attack start and end times use the 'Attack Start/End Times' plug-in.";
+    return "Compute the logarithm (base 10) of the duration of the attack of the signal (unit: log10(seconds)). The "
+    "start and end times of the attack are computed according to Peeters (2004), see code/documentation for further "
+    "details. NOTE: the accuracy of the estimation depends on the step (hop) size of the analysis, the smaller the "
+    "better. The the timestamp of the returned value is the start time of the attack. For visualising the attack start "
+    "and end times use the 'Attack Start/End Times' plug-in.";
 }
 
 string

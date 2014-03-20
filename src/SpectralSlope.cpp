@@ -58,7 +58,8 @@ string
 SpectralSlope::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral slope of the signal for each frame. A bright spectrum will return a value close to 0. If the frame is completely silent a value of 0 is returned.";
+    return "Compute the spectral slope of the signal for each frame. A bright spectrum will return a value close to 0. "
+    "If the frame is completely silent a value of 0 is returned.";
 }
 
 string
@@ -259,8 +260,10 @@ SpectralSlope::process(const float *const *inputBuffers, Vamp::RealTime timestam
     else
     {
         int K = m_blockSize/2;
-        spectralslope = (1.0 / magnitude_sum) * (K*weighted_frequency_sum - frequency_sum*magnitude_sum) / (K*frequency_sqr_sum - pow(frequency_sum,2));
-        //cout << "mag_sum: " << magnitude_sum << " w_fqr_sum: " << weighted_frequency_sum << " fqr_sum: " << frequency_sum << " fqr_sqr_sum: " << frequency_sqr_sum << endl;
+        spectralslope = (1.0 / magnitude_sum) * (K*weighted_frequency_sum - frequency_sum*magnitude_sum) / 
+                        (K*frequency_sqr_sum - pow(frequency_sum,2));
+        //cout << "mag_sum: " << magnitude_sum << " w_fqr_sum: " << weighted_frequency_sum << " fqr_sum: ";
+        //cout << frequency_sum << " fqr_sqr_sum: " << frequency_sqr_sum << endl;
     }
 
     Feature f;

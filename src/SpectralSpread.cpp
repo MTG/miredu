@@ -57,7 +57,8 @@ string
 SpectralSpread::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral spread of the signal for each frame. The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.";
+    return "Compute the spectral spread of the signal for each frame. The unit of the values returned is Hz. If the "
+    "frame is completely silent a value of 0 is returned.";
 }
 
 string

@@ -57,7 +57,9 @@ string
 SpectralKurtosis::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral kurtosis of the signal for each frame. The kurtosis is a measure of the peakedness of a distribution. For a gaussian distribution kurtosis = 3, for a flat distribution kurtosis < 3 and for a peakier distribution kurtosis > 3.If the frame is completely silent a value of 0 is returned.";
+    return "Compute the spectral kurtosis of the signal for each frame. The kurtosis is a measure of the peakedness of "
+    "a distribution. For a gaussian distribution kurtosis = 3, for a flat distribution kurtosis < 3 and for a peakier "
+    "distribution kurtosis > 3.If the frame is completely silent a value of 0 is returned.";
 }
 
 string

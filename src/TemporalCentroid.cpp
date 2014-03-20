@@ -58,7 +58,10 @@ string
 TemporalCentroid::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the temporal centroid of the entire signal, which is the centre of gravity of the energy of the signal. Energy is represented by the RMS of the signal. The termporal centroid is computed between times n1 and n2 which are the first and last times the signal RMS is above 15% of its maximum value. The temporal centroid is returned as a timestamp with no corresponding value.";
+    return "Compute the temporal centroid of the entire signal, which is the centre of gravity of the energy of the "
+    "signal. Energy is represented by the RMS of the signal. The termporal centroid is computed between times n1 and "
+    "n2 which are the first and last times the signal RMS is above 15% of its maximum value. The temporal centroid is "
+    "returned as a timestamp with no corresponding value.";
 }
 
 string

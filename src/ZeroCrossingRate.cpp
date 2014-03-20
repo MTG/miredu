@@ -58,7 +58,8 @@ string
 ZeroCrossingRate::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the zero crossing rate of the signal for each frame (i.e. the number of times the signal changes sign). The unit of the values returned is crossings/second.";
+    return "Compute the zero crossing rate of the signal for each frame (i.e. the number of times the signal changes "
+    "sign). The unit of the values returned is crossings/second.";
 }
 
 string

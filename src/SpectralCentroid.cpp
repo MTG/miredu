@@ -57,7 +57,8 @@ string
 SpectralCentroid::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the spectral centroid of the signal for each frame. The unit of the values returned is Hz. If the frame is completely silent a value of 0 is returned.";
+    return "Compute the spectral centroid of the signal for each frame. The unit of the values returned is Hz. If the "
+    "frame is completely silent a value of 0 is returned.";
 }
 
 string
@@ -242,7 +243,9 @@ SpectralCentroid::process(const float *const *inputBuffers, Vamp::RealTime times
     {
         float breal = inputBuffers[0][i];
         float bimag = inputBuffers[0][i+1];
-        float magnitude = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4); // normalise by window size, ideally by 0.5*sum(window), this is an approximation that works best if a hann window is used.
+        // normalise by window size, ideally by 0.5*sum(window), this is an approximation that works best if a hann
+        // window is used.
+        float magnitude = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
         float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
         magnitude_sum += magnitude;
         weighted_frequency_sum += frequency * magnitude;
