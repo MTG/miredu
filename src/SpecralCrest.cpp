@@ -32,8 +32,8 @@ SpectralCrest::SpectralCrest(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -88,7 +88,7 @@ SpectralCrest::getCopyright() const
 SpectralCrest::InputDomain
 SpectralCrest::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -133,7 +133,7 @@ SpectralCrest::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -144,7 +144,7 @@ SpectralCrest::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -216,11 +216,11 @@ bool
 SpectralCrest::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -234,37 +234,37 @@ SpectralCrest::reset()
 SpectralCrest::FeatureSet
 SpectralCrest::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
-	// Without magnitude normalization
-	float mag_sum = 0.0f;
-	float max_mag = 0.0f;
+    // Without magnitude normalization
+    float mag_sum = 0.0f;
+    float max_mag = 0.0f;
 
     for (size_t i=0; i<m_blockSize; i+=2)
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         float mag = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
-		mag_sum += mag;
-		max_mag = (mag > max_mag) ? mag : max_mag; // check if we have a new maximum
+        mag_sum += mag;
+        max_mag = (mag > max_mag) ? mag : max_mag; // check if we have a new maximum
     }
 
-	float spectralCrest;
+    float spectralCrest;
 
-	if (mag_sum == 0)
-		spectralCrest = 1;
-	else
-	{
-		float arithmetical_mean = mag_sum / float(m_blockSize/2);
-		spectralCrest =  max_mag / arithmetical_mean;
-	}
+    if (mag_sum == 0)
+        spectralCrest = 1;
+    else
+    {
+        float arithmetical_mean = mag_sum / float(m_blockSize/2);
+        spectralCrest =  max_mag / arithmetical_mean;
+    }
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralCrest);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralCrest::FeatureSet

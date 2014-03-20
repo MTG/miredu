@@ -20,9 +20,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-	Library info:
-	
-	Every descriptor is added to the library as a separate plugin.
+    Library info:
+    
+    Every descriptor is added to the library as a separate plugin.
 */
 
 
@@ -77,18 +77,18 @@ vampGetPluginDescriptor(unsigned int version, unsigned int index)
 
     switch (index) {
     case  0: return RMS_PluginAdapter.getDescriptor();
-	case  1: return ZeroCrossingRate_PluginAdapter.getDescriptor();
-	case  2: return SpectralCentroid_PluginAdapter.getDescriptor();
-	case  3: return SpectralSpread_PluginAdapter.getDescriptor();
-	case  4: return SpectralSkewness_PluginAdapter.getDescriptor();
-	case  5: return SpectralKurtosis_PluginAdapter.getDescriptor();
-	case  6: return SpectralRolloff_PluginAdapter.getDescriptor();
-	case  7: return SpectralFlatness_PluginAdapter.getDescriptor();
-	case  8: return SpectralCrest_PluginAdapter.getDescriptor();
-	case  9: return SpectralFlux_PluginAdapter.getDescriptor();
-	case  10: return TemporalCentroid_PluginAdapter.getDescriptor();
-	case  11: return LogAttackTime_PluginAdapter.getDescriptor();
-	case  12: return AttackStartEndTimes_PluginAdapter.getDescriptor();
+    case  1: return ZeroCrossingRate_PluginAdapter.getDescriptor();
+    case  2: return SpectralCentroid_PluginAdapter.getDescriptor();
+    case  3: return SpectralSpread_PluginAdapter.getDescriptor();
+    case  4: return SpectralSkewness_PluginAdapter.getDescriptor();
+    case  5: return SpectralKurtosis_PluginAdapter.getDescriptor();
+    case  6: return SpectralRolloff_PluginAdapter.getDescriptor();
+    case  7: return SpectralFlatness_PluginAdapter.getDescriptor();
+    case  8: return SpectralCrest_PluginAdapter.getDescriptor();
+    case  9: return SpectralFlux_PluginAdapter.getDescriptor();
+    case  10: return TemporalCentroid_PluginAdapter.getDescriptor();
+    case  11: return LogAttackTime_PluginAdapter.getDescriptor();
+    case  12: return AttackStartEndTimes_PluginAdapter.getDescriptor();
     case  13: return MFCC_PluginAdapter.getDescriptor();
     default: return 0;
     }

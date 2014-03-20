@@ -32,9 +32,9 @@ SpectralFlux::SpectralFlux(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0),
-	m_sum_prev_sqr(0)
+    m_blockSize(0),
+    m_stepSize(0),
+    m_sum_prev_sqr(0)
 {
 }
 
@@ -89,7 +89,7 @@ SpectralFlux::getCopyright() const
 SpectralFlux::InputDomain
 SpectralFlux::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -134,7 +134,7 @@ SpectralFlux::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -145,7 +145,7 @@ SpectralFlux::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -217,14 +217,14 @@ bool
 SpectralFlux::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
-	m_prev_mags.clear();
-	m_sum_prev_sqr = 0.0f;
+    m_prev_mags.clear();
+    m_sum_prev_sqr = 0.0f;
 
     return true;
 }
@@ -233,68 +233,68 @@ void
 SpectralFlux::reset()
 {
     // Clear buffers, reset stored values, etc
-	m_prev_mags.clear();
-	m_sum_prev_sqr = 0.0f;
+    m_prev_mags.clear();
+    m_sum_prev_sqr = 0.0f;
 }
 
 SpectralFlux::FeatureSet
 SpectralFlux::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
-	float spectralflux;
-	if (m_prev_mags.empty()) // first frame
-	{
-		for (size_t i=0; i<m_blockSize; i+=2)
-		{
-			float breal = inputBuffers[0][i];
-			float bimag = inputBuffers[0][i+1];
-			m_prev_mags.push_back(sqrt(breal*breal + bimag*bimag));
-			m_sum_prev_sqr += m_prev_mags.back() * m_prev_mags.back();
-		}
-		//if (m_sum_prev_sqr==0)
-		//	m_sum_prev_sqr = std::numeric_limits<float>::epsilon();
-		spectralflux = 0;
-	}
-	else // all other frames
-	{
-		float sum_prod = 0.0f;
-		float sum_current_sqr = 0.0f;
+    float spectralflux;
+    if (m_prev_mags.empty()) // first frame
+    {
+        for (size_t i=0; i<m_blockSize; i+=2)
+        {
+            float breal = inputBuffers[0][i];
+            float bimag = inputBuffers[0][i+1];
+            m_prev_mags.push_back(sqrt(breal*breal + bimag*bimag));
+            m_sum_prev_sqr += m_prev_mags.back() * m_prev_mags.back();
+        }
+        //if (m_sum_prev_sqr==0)
+        //    m_sum_prev_sqr = std::numeric_limits<float>::epsilon();
+        spectralflux = 0;
+    }
+    else // all other frames
+    {
+        float sum_prod = 0.0f;
+        float sum_current_sqr = 0.0f;
 
-		for (size_t i=0; i<m_blockSize; i+=2)
-		{
-			float breal = inputBuffers[0][i];
-			float bimag = inputBuffers[0][i+1];
-			float mag = (sqrt(breal*breal + bimag*bimag)) / (m_blockSize/4);
-			sum_prod += m_prev_mags[i/2] * mag;
-			sum_current_sqr += mag * mag;
+        for (size_t i=0; i<m_blockSize; i+=2)
+        {
+            float breal = inputBuffers[0][i];
+            float bimag = inputBuffers[0][i+1];
+            float mag = (sqrt(breal*breal + bimag*bimag)) / (m_blockSize/4);
+            sum_prod += m_prev_mags[i/2] * mag;
+            sum_current_sqr += mag * mag;
 
-			m_prev_mags[i/2] = mag; // replace old mag with new for next round
-		}
-		
-		//if (sum_current_sqr==0)
-		//	sum_current_sqr = std::numeric_limits<float>::epsilon();
+            m_prev_mags[i/2] = mag; // replace old mag with new for next round
+        }
+        
+        //if (sum_current_sqr==0)
+        //    sum_current_sqr = std::numeric_limits<float>::epsilon();
 
-		if (m_sum_prev_sqr == 0 || sum_current_sqr == 0)
-		{
-			if (m_sum_prev_sqr == 0 && sum_current_sqr == 0)  
-				spectralflux = 0; // both frames silent, flux = 0
-			else
-				spectralflux = 1; // one frame slilent and other not, flux = 1
-		}
-		else
-			spectralflux = 1 - sum_prod / sqrt(m_sum_prev_sqr * sum_current_sqr); // both non-silent
+        if (m_sum_prev_sqr == 0 || sum_current_sqr == 0)
+        {
+            if (m_sum_prev_sqr == 0 && sum_current_sqr == 0)  
+                spectralflux = 0; // both frames silent, flux = 0
+            else
+                spectralflux = 1; // one frame slilent and other not, flux = 1
+        }
+        else
+            spectralflux = 1 - sum_prod / sqrt(m_sum_prev_sqr * sum_current_sqr); // both non-silent
 
-		// Prepare for next round
-		m_sum_prev_sqr = sum_current_sqr;
-	}
+        // Prepare for next round
+        m_sum_prev_sqr = sum_current_sqr;
+    }
     
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralflux);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralFlux::FeatureSet

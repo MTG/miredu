@@ -33,8 +33,8 @@ SpectralSlope::SpectralSlope(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -89,7 +89,7 @@ SpectralSlope::getCopyright() const
 SpectralSlope::InputDomain
 SpectralSlope::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -134,7 +134,7 @@ SpectralSlope::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -145,7 +145,7 @@ SpectralSlope::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -217,11 +217,11 @@ bool
 SpectralSlope::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -236,41 +236,41 @@ SpectralSlope::FeatureSet
 SpectralSlope::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Do actual work!
-	float magnitude_sum = 0.0f;
-	float weighted_frequency_sum = 0.0f;
-	float frequency_sum = 0.0f;
-	float frequency_sqr_sum = 0.0f;
+    float magnitude_sum = 0.0f;
+    float weighted_frequency_sum = 0.0f;
+    float frequency_sum = 0.0f;
+    float frequency_sqr_sum = 0.0f;
 
     for (size_t i=0; i<m_blockSize; i+=2)
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         float magnitude = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
-		float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
+        float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
         magnitude_sum += magnitude;
-		weighted_frequency_sum += frequency * magnitude;
-		frequency_sum += frequency;
-		frequency_sqr_sum += frequency * frequency;
+        weighted_frequency_sum += frequency * magnitude;
+        frequency_sum += frequency;
+        frequency_sqr_sum += frequency * frequency;
     }
 
-	float spectralslope;
-	if (magnitude_sum == 0)
-		spectralslope = 0;
-	else
-	{
-		int K = m_blockSize/2;
-		spectralslope = (1.0 / magnitude_sum) * (K*weighted_frequency_sum - frequency_sum*magnitude_sum) / (K*frequency_sqr_sum - pow(frequency_sum,2));
-		//cout << "mag_sum: " << magnitude_sum << " w_fqr_sum: " << weighted_frequency_sum << " fqr_sum: " << frequency_sum << " fqr_sqr_sum: " << frequency_sqr_sum << endl;
-	}
+    float spectralslope;
+    if (magnitude_sum == 0)
+        spectralslope = 0;
+    else
+    {
+        int K = m_blockSize/2;
+        spectralslope = (1.0 / magnitude_sum) * (K*weighted_frequency_sum - frequency_sum*magnitude_sum) / (K*frequency_sqr_sum - pow(frequency_sum,2));
+        //cout << "mag_sum: " << magnitude_sum << " w_fqr_sum: " << weighted_frequency_sum << " fqr_sum: " << frequency_sum << " fqr_sqr_sum: " << frequency_sqr_sum << endl;
+    }
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralslope);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralSlope::FeatureSet

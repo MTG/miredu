@@ -32,9 +32,9 @@ SpectralRolloff::SpectralRolloff(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0),
-	m_rolloffthreshold(95)
+    m_blockSize(0),
+    m_stepSize(0),
+    m_rolloffthreshold(95)
 {
 }
 
@@ -89,7 +89,7 @@ SpectralRolloff::getCopyright() const
 SpectralRolloff::InputDomain
 SpectralRolloff::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -143,7 +143,7 @@ SpectralRolloff::getParameterDescriptors() const
     d.maxValue = 100;
     d.defaultValue = 95;
     d.isQuantized = true;
-	d.quantizeStep = 1;
+    d.quantizeStep = 1;
     list.push_back(d);
 
     return list;
@@ -153,22 +153,22 @@ float
 SpectralRolloff::getParameter(string identifier) const
 {
     if (identifier == "rolloffthreshold") return m_rolloffthreshold; // return the ACTUAL current value of your parameter here!
-	
-	return 0;
+    
+    return 0;
 }
 
 void
 SpectralRolloff::setParameter(string identifier, float value) 
 {
-	if (identifier == "rolloffthreshold")
-	{
-		if (value > 100)
-			m_rolloffthreshold = 100;
-		else if (value < 0)
-			m_rolloffthreshold = 0;
-		else
-			m_rolloffthreshold = value;
-	}
+    if (identifier == "rolloffthreshold")
+    {
+        if (value > 100)
+            m_rolloffthreshold = 100;
+        else if (value < 0)
+            m_rolloffthreshold = 0;
+        else
+            m_rolloffthreshold = value;
+    }
 }
 
 SpectralRolloff::ProgramList
@@ -221,11 +221,11 @@ bool
 SpectralRolloff::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -240,46 +240,46 @@ SpectralRolloff::FeatureSet
 SpectralRolloff::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Do actual work!
-	float magnitude_sqr_sum = 0.0f;
-	vector<float> magnitudes_sqr(m_blockSize/2);
-	vector<float> frequencies(m_blockSize/2);
+    float magnitude_sqr_sum = 0.0f;
+    vector<float> magnitudes_sqr(m_blockSize/2);
+    vector<float> frequencies(m_blockSize/2);
 
     for (size_t i=0; i<m_blockSize; i+=2)
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         float magnitude = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
-		float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
+        float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
         magnitude_sqr_sum += magnitude * magnitude;
-		magnitudes_sqr[i/2] = magnitude * magnitude;
-		frequencies[i/2] = frequency;
+        magnitudes_sqr[i/2] = magnitude * magnitude;
+        frequencies[i/2] = frequency;
     }
 
-	float spectralrolloff;
+    float spectralrolloff;
 
-	if (magnitude_sqr_sum == 0)
-		spectralrolloff = 0;
-	else
-	{
-		float threshold = m_rolloffthreshold / 100.0f; // convert from percentage to fraction
-		float rolloff_sum = 0.0f;
-		int rolloff_index = 0;
-		while (rolloff_index < (int)(m_blockSize/2) && rolloff_sum < threshold * magnitude_sqr_sum)
-		{
-			rolloff_sum += magnitudes_sqr[rolloff_index];
-			rolloff_index++;
-		}
-		spectralrolloff = frequencies[rolloff_index-1]; // -1 because rolloff_index is increased after the summation
-	}
+    if (magnitude_sqr_sum == 0)
+        spectralrolloff = 0;
+    else
+    {
+        float threshold = m_rolloffthreshold / 100.0f; // convert from percentage to fraction
+        float rolloff_sum = 0.0f;
+        int rolloff_index = 0;
+        while (rolloff_index < (int)(m_blockSize/2) && rolloff_sum < threshold * magnitude_sqr_sum)
+        {
+            rolloff_sum += magnitudes_sqr[rolloff_index];
+            rolloff_index++;
+        }
+        spectralrolloff = frequencies[rolloff_index-1]; // -1 because rolloff_index is increased after the summation
+    }
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralrolloff);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralRolloff::FeatureSet

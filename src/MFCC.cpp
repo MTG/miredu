@@ -9,7 +9,7 @@
     MIR.EDU is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    (at your option) any later version. 
 
     MIR.EDU is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -346,7 +346,7 @@ MFCC::get_filterbanks(int nfilt, int nfft, float samplerate, float lowfreq, floa
     // cout << endl;
 
     vector< vector<float> > filterbank(nfilt,vector<float>(nfft/2));
-    cout << filterbank.size() << " " << filterbank[0].size() << endl;
+    // cout << filterbank.size() << " " << filterbank[0].size() << endl;
     for (int j=0; j<nfilt; j++)
     {
         // Create first half of triangle

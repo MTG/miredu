@@ -91,11 +91,11 @@ public:
 
 protected:
     // plugin-specific data and methods go here
-	size_t m_blockSize;
-	size_t m_stepSize;
+    size_t m_blockSize;
+    size_t m_stepSize;
 
-	vector<float> m_rms;
-	vector<Vamp::RealTime> m_timestamps;
+    vector<float> m_rms;
+    vector<Vamp::RealTime> m_timestamps;
 };
 
 

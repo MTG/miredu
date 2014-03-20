@@ -32,8 +32,8 @@ SpectralCentroid::SpectralCentroid(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -88,7 +88,7 @@ SpectralCentroid::getCopyright() const
 SpectralCentroid::InputDomain
 SpectralCentroid::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -133,7 +133,7 @@ SpectralCentroid::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -144,7 +144,7 @@ SpectralCentroid::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -216,11 +216,11 @@ bool
 SpectralCentroid::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -235,33 +235,33 @@ SpectralCentroid::FeatureSet
 SpectralCentroid::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Do actual work!
-	float magnitude_sum = 0.0f;
-	float weighted_frequency_sum = 0.0f;
+    float magnitude_sum = 0.0f;
+    float weighted_frequency_sum = 0.0f;
 
     for (size_t i=0; i<m_blockSize; i+=2)
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         float magnitude = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4); // normalise by window size, ideally by 0.5*sum(window), this is an approximation that works best if a hann window is used.
-		float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
+        float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
         magnitude_sum += magnitude;
-		weighted_frequency_sum += frequency * magnitude;
+        weighted_frequency_sum += frequency * magnitude;
     }
 
-	float spectralcentroid;
-	if (magnitude_sum == 0)
-		spectralcentroid = 0;
-	else
-		spectralcentroid = weighted_frequency_sum / magnitude_sum;
+    float spectralcentroid;
+    if (magnitude_sum == 0)
+        spectralcentroid = 0;
+    else
+        spectralcentroid = weighted_frequency_sum / magnitude_sum;
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralcentroid);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralCentroid::FeatureSet

@@ -33,8 +33,8 @@ ZeroCrossingRate::ZeroCrossingRate(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -134,7 +134,7 @@ ZeroCrossingRate::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -145,7 +145,7 @@ ZeroCrossingRate::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -217,11 +217,11 @@ bool
 ZeroCrossingRate::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -236,29 +236,29 @@ ZeroCrossingRate::FeatureSet
 ZeroCrossingRate::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Do actual work!
-	int crossings = 0;
+    int crossings = 0;
 
     size_t i = 1; // note: same type as m_blockSize
 
     while (i < m_blockSize)
-	{
-		if ((inputBuffers[0][i-1]>=0 && inputBuffers[0][i]< 0) ||
-			(inputBuffers[0][i-1]< 0 && inputBuffers[0][i]>=0))
-			crossings++;
+    {
+        if ((inputBuffers[0][i-1]>=0 && inputBuffers[0][i]< 0) ||
+            (inputBuffers[0][i-1]< 0 && inputBuffers[0][i]>=0))
+            crossings++;
         ++i;
     }
 
-	float zerocrossingrate = (float)crossings / (float)m_blockSize; // unit: crossings/sample
-	zerocrossingrate *= m_inputSampleRate; // unit: crossings/second
+    float zerocrossingrate = (float)crossings / (float)m_blockSize; // unit: crossings/sample
+    zerocrossingrate *= m_inputSampleRate; // unit: crossings/second
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(zerocrossingrate);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 ZeroCrossingRate::FeatureSet

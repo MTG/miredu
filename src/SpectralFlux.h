@@ -91,10 +91,10 @@ public:
 
 protected:
     // plugin-specific data and methods go here
-	size_t m_blockSize;
-	size_t m_stepSize;
-	vector<float> m_prev_mags;
-	float m_sum_prev_sqr;
+    size_t m_blockSize;
+    size_t m_stepSize;
+    vector<float> m_prev_mags;
+    float m_sum_prev_sqr;
 };
 
 

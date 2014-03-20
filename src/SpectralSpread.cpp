@@ -32,8 +32,8 @@ SpectralSpread::SpectralSpread(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -88,7 +88,7 @@ SpectralSpread::getCopyright() const
 SpectralSpread::InputDomain
 SpectralSpread::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -133,7 +133,7 @@ SpectralSpread::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -144,7 +144,7 @@ SpectralSpread::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -216,11 +216,11 @@ bool
 SpectralSpread::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -235,46 +235,46 @@ SpectralSpread::FeatureSet
 SpectralSpread::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Step 1: compute the mean (centroid)
-	float magnitude_sum = 0.0f;
-	float weighted_frequency_sum = 0.0f;
-	vector<float> mags(m_blockSize/2);
-	vector<float> frqs(m_blockSize/2);
+    float magnitude_sum = 0.0f;
+    float weighted_frequency_sum = 0.0f;
+    vector<float> mags(m_blockSize/2);
+    vector<float> frqs(m_blockSize/2);
 
     for (size_t i=0; i<m_blockSize; i+=2)
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         mags[i/2] = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
-		frqs[i/2] = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
+        frqs[i/2] = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
         magnitude_sum += mags[i/2];
-		weighted_frequency_sum += frqs[i/2] * mags[i/2];
+        weighted_frequency_sum += frqs[i/2] * mags[i/2];
     }
 
-	float spectralspread;
+    float spectralspread;
 
-	// If signal completely silent, return 0
-	if (magnitude_sum == 0)
-		spectralspread = 0;
-	else
-	{
-		float centroid = weighted_frequency_sum / magnitude_sum;
-		float spread_sum = 0.0f;
+    // If signal completely silent, return 0
+    if (magnitude_sum == 0)
+        spectralspread = 0;
+    else
+    {
+        float centroid = weighted_frequency_sum / magnitude_sum;
+        float spread_sum = 0.0f;
 
-		for (size_t i=0; i<m_blockSize/2; i++)
-			spread_sum += pow((frqs[i]- centroid),2) * mags[i];
-		
-		
-		spectralspread = sqrt(spread_sum / magnitude_sum); // = weighted std. deviation
-	}
+        for (size_t i=0; i<m_blockSize/2; i++)
+            spread_sum += pow((frqs[i]- centroid),2) * mags[i];
+        
+        
+        spectralspread = sqrt(spread_sum / magnitude_sum); // = weighted std. deviation
+    }
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralspread);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralSpread::FeatureSet

@@ -33,8 +33,8 @@ RMS::RMS(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -134,7 +134,7 @@ RMS::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -145,7 +145,7 @@ RMS::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -217,11 +217,11 @@ bool
 RMS::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -236,28 +236,28 @@ RMS::FeatureSet
 RMS::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
     // Do actual work!
-	float energy = 0.0f;
+    float energy = 0.0f;
 
     size_t i = 0; // note: same type as m_blockSize
 
     while (i < m_blockSize)
-	{
+    {
         float sample = inputBuffers[0][i];
         energy += sample * sample;
         ++i;
     }
 
     float mean_energy = energy / m_blockSize;
-	float rms = sqrt(mean_energy);
+    float rms = sqrt(mean_energy);
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(rms);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 RMS::FeatureSet

@@ -89,9 +89,9 @@ public:
 
 protected:
     // plugin-specific data and methods go here
-	size_t m_blockSize;
-	size_t m_stepSize;
-	float m_rolloffthreshold;
+    size_t m_blockSize;
+    size_t m_stepSize;
+    float m_rolloffthreshold;
 };
 
 

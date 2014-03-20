@@ -32,8 +32,8 @@ SpectralFlatness::SpectralFlatness(float inputSampleRate) :
     // Also be sure to set your plugin parameters (presumably stored
     // in member variables) to their default values here -- the host
     // will not do that for you
-	m_blockSize(0),
-	m_stepSize(0)
+    m_blockSize(0),
+    m_stepSize(0)
 {
 }
 
@@ -88,7 +88,7 @@ SpectralFlatness::getCopyright() const
 SpectralFlatness::InputDomain
 SpectralFlatness::getInputDomain() const
 {
-	return FrequencyDomain;
+    return FrequencyDomain;
 }
 
 size_t
@@ -133,7 +133,7 @@ SpectralFlatness::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-	/* No parameters
+    /* No parameters
     ParameterDescriptor d;
     d.identifier = "parameter";
     d.name = "Some Parameter";
@@ -144,7 +144,7 @@ SpectralFlatness::getParameterDescriptors() const
     d.defaultValue = 5;
     d.isQuantized = false;
     list.push_back(d);
-	*/
+    */
 
     return list;
 }
@@ -216,11 +216,11 @@ bool
 SpectralFlatness::initialise(size_t channels, size_t stepSize, size_t blockSize)
 {
     if (channels < getMinChannelCount() ||
-	channels > getMaxChannelCount()) return false;
+    channels > getMaxChannelCount()) return false;
 
     // Real initialisation work goes here!
-	m_blockSize = blockSize;
-	m_stepSize = stepSize;
+    m_blockSize = blockSize;
+    m_stepSize = stepSize;
 
     return true;
 }
@@ -234,74 +234,74 @@ SpectralFlatness::reset()
 SpectralFlatness::FeatureSet
 SpectralFlatness::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
-	/* WITH NORMALIZATION
-	// Step 1: normalise magnitudes
-	vector<float> mags(m_blockSize/2);
-	float magnitude_sum = 0.0f;
+    /* WITH NORMALIZATION
+    // Step 1: normalise magnitudes
+    vector<float> mags(m_blockSize/2);
+    float magnitude_sum = 0.0f;
 
     for (size_t i=0; i<m_blockSize; i+=2)
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         mags[i/2] = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
-		magnitude_sum += mags[i/2];
+        magnitude_sum += mags[i/2];
     }
 
-	float spectralflatness;
+    float spectralflatness;
 
-	if (magnitude_sum == 0)
-		spectralflatness = 1; // completely silent signal, return 1 (flat spectrum)
-	else
-	{
-		// Finish normalization and compute product
-		float mag_log_sum = 0.0f;
-		for (size_t i=0; i<m_blockSize/2; i++)
-		{
-			mags[i] /= magnitude_sum; // normalize magnitude
-			mag_log_sum += log(mags[i]); // compute some of logarithms
-			//cout << "(" << mag_log_sum << ") "; // debugging
-		}
+    if (magnitude_sum == 0)
+        spectralflatness = 1; // completely silent signal, return 1 (flat spectrum)
+    else
+    {
+        // Finish normalization and compute product
+        float mag_log_sum = 0.0f;
+        for (size_t i=0; i<m_blockSize/2; i++)
+        {
+            mags[i] /= magnitude_sum; // normalize magnitude
+            mag_log_sum += log(mags[i]); // compute some of logarithms
+            //cout << "(" << mag_log_sum << ") "; // debugging
+        }
 
-		// Step 2: calculate geometric and arithmetical means
-		float arithmetical_mean = 1.0f / float(m_blockSize/2); // we've normalized the sum to 1
-		float geometric_mean = exp(mag_log_sum/float(m_blockSize/2));
-		
-		spectralflatness = geometric_mean / arithmetical_mean;
-	}
-	*/
+        // Step 2: calculate geometric and arithmetical means
+        float arithmetical_mean = 1.0f / float(m_blockSize/2); // we've normalized the sum to 1
+        float geometric_mean = exp(mag_log_sum/float(m_blockSize/2));
+        
+        spectralflatness = geometric_mean / arithmetical_mean;
+    }
+    */
 
-	// Without magnitude normalization
-	float mag_sum = 0.0f;
-	float mag_log_sum = 0.0f;
+    // Without magnitude normalization
+    float mag_sum = 0.0f;
+    float mag_log_sum = 0.0f;
 
     for (size_t i=2; i<m_blockSize+2; i+=2) // Skip DC component
-	{
-		float breal = inputBuffers[0][i];
-		float bimag = inputBuffers[0][i+1];
+    {
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1];
         float mag = sqrt(breal*breal + bimag*bimag) / (m_blockSize/4);
-		mag_sum += mag;
-		mag_log_sum += log(mag); // instead of product compute sum of logs to avoid arithmetic underflow! (numerically safer)
+        mag_sum += mag;
+        mag_log_sum += log(mag); // instead of product compute sum of logs to avoid arithmetic underflow! (numerically safer)
     }
 
-	float spectralflatness;
+    float spectralflatness;
 
-	if (mag_sum == 0)
-		spectralflatness = 1;
-	else
-	{
-		float arithmetical_mean = mag_sum / float(m_blockSize/2);
-		float geometric_mean = exp(mag_log_sum / float(m_blockSize/2));
-		spectralflatness = geometric_mean / arithmetical_mean;
-	}
+    if (mag_sum == 0)
+        spectralflatness = 1;
+    else
+    {
+        float arithmetical_mean = mag_sum / float(m_blockSize/2);
+        float geometric_mean = exp(mag_log_sum / float(m_blockSize/2));
+        spectralflatness = geometric_mean / arithmetical_mean;
+    }
 
-	Feature f;
+    Feature f;
     f.hasTimestamp = false;
     f.values.push_back(spectralflatness);
 
     FeatureSet fs;
     fs[0].push_back(f);
 
-	return fs;
+    return fs;
 }
 
 SpectralFlatness::FeatureSet
