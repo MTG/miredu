@@ -42,6 +42,7 @@
 #include "TemporalCentroid.h"
 #include "LogAttackTime.h"
 #include "AttackStartEndTimes.h"
+#include "MFCC.h"
 
 // Declare one static adapter here for each plugin class in this library.
 
@@ -58,6 +59,7 @@ static Vamp::PluginAdapter<SpectralFlux> SpectralFlux_PluginAdapter;
 static Vamp::PluginAdapter<TemporalCentroid> TemporalCentroid_PluginAdapter;
 static Vamp::PluginAdapter<LogAttackTime> LogAttackTime_PluginAdapter;
 static Vamp::PluginAdapter<AttackStartEndTimes> AttackStartEndTimes_PluginAdapter;
+static Vamp::PluginAdapter<MFCC> MFCC_PluginAdapter;
 
 
 // This is the entry-point for the library, and the only function that
@@ -87,6 +89,7 @@ vampGetPluginDescriptor(unsigned int version, unsigned int index)
 	case  10: return TemporalCentroid_PluginAdapter.getDescriptor();
 	case  11: return LogAttackTime_PluginAdapter.getDescriptor();
 	case  12: return AttackStartEndTimes_PluginAdapter.getDescriptor();
+    case  13: return MFCC_PluginAdapter.getDescriptor();
     default: return 0;
     }
 }

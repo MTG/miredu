@@ -21,6 +21,7 @@ PLUGIN_LIBRARY_NAME := mir-edu
 #
 PLUGIN_SOURCES := $(SRCDIR)/AttackStartEndTimes.cpp \
 $(SRCDIR)/LogAttackTime.cpp \
+$(SRCDIR)/MFCC.cpp \
 $(SRCDIR)/RMS.cpp \
 $(SRCDIR)/SpecralCrest.cpp \
 $(SRCDIR)/SpectralCentroid.cpp \
@@ -39,6 +40,7 @@ $(SRCDIR)/plugins.cpp
 #
 PLUGIN_HEADERS := $(SRCDIR)/AttackStartEndTimes.h \
 $(SRCDIR)/LogAttackTime.h \
+$(SRCDIR)/MFCC.h \
 $(SRCDIR)/RMS.h \
 $(SRCDIR)/SpectralCentroid.h \
 $(SRCDIR)/SpectralCrest.h \
