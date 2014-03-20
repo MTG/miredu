@@ -63,7 +63,6 @@ VAMP_SDK_DIR := ../vamp-plugin-sdk
 ## Uncomment these for an OS/X universal binary (32- and 64-bit Intel)
 ## supporting 10.5 or newer. Use this if you have OS/X 10.7 with the
 ## Xcode 4 command-line tools.
-
 CXX := g++
 CXXFLAGS := -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -I$(VAMP_SDK_DIR) -O2 -DNDEBUG -Wall -fPIC
 PLUGIN_EXT := .dylib

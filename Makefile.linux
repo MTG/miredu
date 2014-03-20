@@ -90,7 +90,6 @@ VAMP_SDK_DIR := ../vamp-plugin-sdk
 
 
 ##  Uncomment these for Linux using the standard tools:
-
 CXXFLAGS := -I$(VAMP_SDK_DIR) -s -O2 -DNDEBUG -Wall -fPIC
 PLUGIN_EXT := .so
 LDFLAGS := -shared -Wl,-soname=$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -Wl,--version-script=vamp-plugin.map
