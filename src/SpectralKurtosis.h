@@ -36,7 +36,7 @@
     c = sum(f_i * m_i) / sum(m_i)
     and spread is the spectral spread (i.e. wieghted std. deviation) given
     by spread = sqrt( sum( (f_i - c)^2 * m_i ) / sum (m_i) )
-    Reference:
+    Reference: http://en.wikipedia.org/wiki/Kurtosis
  */
 
 // Remember to use a different guard symbol in each header!
