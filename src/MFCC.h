@@ -24,12 +24,14 @@
  
     Feature name: MFCC (Mel Frequency Cepstral Coefficients)
     Description: Compute the MFCCs of each frame of the signal.
-    Unit: 
-    Formula: 
+    Unit: see reference
+    Formula: see reference
     Reference: 
     http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/
     Credit: Implementation based on the python mfcc implementation at: 
     https://github.com/jameslyons/python_speech_features/
+    The liftering function is based on the matlab implementation at (without the HTK liftering):
+    http://labrosa.ee.columbia.edu/matlab/rastamat/
  */
 
 
@@ -90,6 +92,7 @@ protected:
     float mel2hz(float mel);
     vector< vector<float> > get_filterbanks(int nfilt, int nfft, float samplerate, float lowfreq, float highfreq);
     vector<float> dct(vector<float> x);
+    vector<float> lifter(vector<float> cep, float lift_exp);
 
     // plugin-specific data and methods go here
     size_t m_blockSize;
@@ -100,6 +103,7 @@ protected:
     size_t m_nFilters; // number of mel filters to use
     size_t m_nCoeffs; // number of MFCC coefficients to return (default = 13)
     bool m_useEnergy; // whether to replace coeff0 with log of the true energy of the frame (true) or not (false)
+    float m_lifterExp;  // the exponent to use for liftering (0 = no liftering, 1 = max liftering)
 
     vector< vector<float> > m_filterbank;
 };

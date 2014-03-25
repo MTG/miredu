@@ -35,10 +35,11 @@ MFCC::MFCC(float inputSampleRate) :
     m_blockSize(0),
     m_stepSize(0),
     m_minFreq(0),
-    m_maxFreq(inputSampleRate / 2.0),
+    m_maxFreq(fmin(4000,inputSampleRate / 2.0)),
     m_nFilters(40),
-    m_nCoeffs(20),
-    m_useEnergy(true)
+    m_nCoeffs(13),
+    m_useEnergy(true),
+    m_lifterExp(0.6)
 {
 }
 
@@ -61,7 +62,9 @@ string
 MFCC::getDescription() const
 {
     // Return something helpful here!
-    return "Compute the Mel Frequency Cepstral Coefficients (MFCC) for each frame.";
+    return "Compute the Mel Frequency Cepstral Coefficients (MFCC) for each frame. MFCCs provide a concise "
+    "representation of the spectral envelope of a sound, which in turn is related to the sound's timbre. Please refer to "
+    "the code in MFCC.cpp and the reference provided in MFCC.h for a detailed explanation of how MFCCs are computed.";
 }
 
 string
@@ -137,18 +140,62 @@ MFCC::getParameterDescriptors() const
     // not explicitly set your parameters to their defaults for you if
     // they have not changed in the mean time.
 
-    /* No parameters
-    ParameterDescriptor d;
-    d.identifier = "parameter";
-    d.name = "Some Parameter";
-    d.description = "";
-    d.unit = "";
-    d.minValue = 0;
-    d.maxValue = 10;
-    d.defaultValue = 5;
-    d.isQuantized = false;
-    list.push_back(d);
-    */
+    ParameterDescriptor d1;
+    d1.identifier = "minfrequency";
+    d1.name = "Minimum Frequency";
+    d1.description = "Minimum frequency to be included in the MFCC computation";
+    d1.unit = "Hz";
+    d1.minValue = 0;
+    d1.maxValue = m_inputSampleRate / 2.0;
+    d1.defaultValue = 0;
+    d1.isQuantized = false;
+    list.push_back(d1);
+
+    ParameterDescriptor d2;
+    d2.identifier = "maxfrequency";
+    d2.name = "Maximum Frequency";
+    d2.description = "Maximum frequency to be included in the MFCC computation";
+    d2.unit = "Hz";
+    d2.minValue = 0;
+    d2.maxValue = m_inputSampleRate / 2.0;
+    d2.defaultValue = 4000;
+    d2.isQuantized = false;
+    list.push_back(d2);
+
+    ParameterDescriptor d3;
+    d3.identifier = "nfilters";
+    d3.name = "Mel Bands";
+    d3.description = "Number of mel bands to use in the MFCC computation";
+    d3.unit = "";
+    d3.minValue = 20;
+    d3.maxValue = 40;
+    d3.defaultValue = 40;
+    d3.isQuantized = true;
+    d3.quantizeStep = 1;
+    list.push_back(d3);
+
+    ParameterDescriptor d4;
+    d4.identifier = "ncoeffs";
+    d4.name = "MFCC Coefficients";
+    d4.description = "Number of MFCC coefficients to return";
+    d4.unit = "";
+    d4.minValue = 13;
+    d4.maxValue = 20;
+    d4.defaultValue = 13;
+    d4.isQuantized = true;
+    d4.quantizeStep = 1;
+    list.push_back(d4);
+
+    ParameterDescriptor d5;
+    d5.identifier = "liftering";
+    d5.name = "Liftering Exponent";
+    d5.description = "Exponent to use in the liftering stage (0 = no liftering)";
+    d5.unit = "";
+    d5.minValue = 0;
+    d5.maxValue = 1;
+    d5.defaultValue = 0.6;
+    d5.isQuantized = false;
+    list.push_back(d5);
 
     return list;
 }
@@ -159,6 +206,13 @@ MFCC::getParameter(string identifier) const
    // if (identifier == "parameter") {
    //     return 5; // return the ACTUAL current value of your parameter here!
    // }
+
+    if (identifier == "minfrequency") return m_minFreq;
+    if (identifier == "maxfrequency") return m_maxFreq;
+    if (identifier == "nfilters") return m_nFilters;
+    if (identifier == "ncoeffs") return m_nCoeffs;
+    if (identifier == "liftering") return m_lifterExp;
+    
     return 0;
 }
 
@@ -168,6 +222,12 @@ MFCC::setParameter(string identifier, float value)
     //if (identifier == "parameter") {
     //    // set the actual value of your parameter
     //}
+
+    if (identifier == "minfrequency") m_minFreq = fmin(value, m_maxFreq);
+    if (identifier == "maxfrequency") m_maxFreq = fmax(value, m_minFreq);
+    if (identifier == "nfilters") m_nFilters = int(value);
+    if (identifier == "ncoeffs") m_nCoeffs = (int)fmin(value, m_nFilters);
+    if (identifier == "liftering") m_lifterExp = value;
 }
 
 MFCC::ProgramList
@@ -206,7 +266,7 @@ MFCC::getOutputDescriptors() const
     d.description = "";
     d.unit = "";
     d.hasFixedBinCount = true;
-    d.binCount = 13;
+    d.binCount = m_nCoeffs;
     d.hasKnownExtents = false;
     d.isQuantized = false;
     d.sampleType = OutputDescriptor::OneSamplePerStep;
@@ -286,7 +346,10 @@ MFCC::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
     if (m_useEnergy)
         energy_features[0] = log(energy + std::numeric_limits<double>::epsilon());
 
-    // STEP 7: return the desired number of coefficients
+    // STEP 7: lifter the coefficients
+    energy_features = lifter(energy_features, m_lifterExp);
+
+    // STEP 8: return the desired number of coefficients
     Feature f;
     f.hasTimestamp = false;
     for (size_t k=0; k<m_nCoeffs; k++)
@@ -403,6 +466,28 @@ MFCC::dct(vector<float> x)
         dct_coeff[k] *= sqrt(2.0/float(N));
 
     return dct_coeff;
+}
+
+/**
+ * Apply a cepstral lifter to the array of cepstra. This has the effect of increasing the
+ * magnitude of the high frequency DCT coefficiengs.
+ *   
+ * Input: 
+ * - cep: the array of mel-cepstra, of size m_nCoeffs
+ * - lift_exp: the exponent to use in the liftering (0 = no liftering, 1 = maximum liftering)
+ * 
+ * Output:
+ * - A vector (same size as the input vector cep) with the liftered mel-cepstra
+ */
+vector<float>
+MFCC::lifter(vector<float> cep, float lift_exp)
+{
+    vector<float> liftered_cep(cep.size());
+    liftered_cep[0] = cep[0]; // coeff0 is copied as is
+    for (size_t i=1; i < cep.size(); i++)
+        liftered_cep[i] = cep[i] * pow(i,lift_exp);
+
+    return liftered_cep;
 }
 
 
