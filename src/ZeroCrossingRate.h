@@ -29,7 +29,9 @@
  * Description: Compute the zero crossing rate of the signal in each frame. <br/>
  * Unit: crossings/second <br/>
  * Formula: See reference. We consider >=0 as positive, <0 as negative. <br/>
- * Reference: http://en.wikipedia.org/wiki/Zero-crossing_rate <br/>
+ * Reference1: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
+ * Reference2: http://en.wikipedia.org/wiki/Zero-crossing_rate <br/>
  */
 
 
