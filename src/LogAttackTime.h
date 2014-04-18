@@ -36,7 +36,7 @@
  * NOTE 3: the accuracy of the estimation depends on the step (hop) size of the analysis, the <br/>
  * smaller the better. <br/>
  * Reference: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
  * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 

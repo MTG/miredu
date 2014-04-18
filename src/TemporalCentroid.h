@@ -25,20 +25,20 @@
  *
  * @section DESCRIPTION
  *
- * Feature name: Temporal Centroid </br>
+ * Feature name: Temporal Centroid <br/>
  * Description: Compute the temporal centroid, which is the centre of gravity
- * of the signal energy. </br>
- * NOTE: we use the RMS to represent the signal energy. </br>
- * Unit: time (seconds) </br>
- * Formula: temporalcentroid = sum (t_i * e_i) / sum (e_i) </br>
- * where t_i is the time at frame i, and e_i is the energy at frame i. </br>
+ * of the signal energy. <br/>
+ * NOTE: we use the RMS to represent the signal energy. <br/>
+ * Unit: time (seconds) <br/>
+ * Formula: temporalcentroid = sum (t_i * e_i) / sum (e_i) <br/>
+ * where t_i is the time at frame i, and e_i is the energy at frame i. <br/>
  * NOTE 2: we only compute the temporal centroid between times n1 and n2,
  * which are the first and last times the signal RMS is above 15% of its
- * maximum value. </br>
- * NOTE 3: the temporal centroid is returned as a timestamp with no corresponding value. </br>
+ * maximum value. <br/>
+ * NOTE 3: the temporal centroid is returned as a timestamp with no corresponding value. <br/>
  * Reference: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
- * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
+ * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 
 

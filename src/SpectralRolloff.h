@@ -35,7 +35,7 @@
  * Formula: f_r, where sum(a_i^2) from f_0..f_r = 0.95 * sum(a_i^2) from f_1 to f_N
  * where i=1..N <br/>
  * Reference: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
  * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 

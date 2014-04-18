@@ -35,8 +35,8 @@
  * spectral magnitudes, and c is the centroid given by:
  * c = sum(f_i * m_i) / sum(m_i)
  * Reference: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
- * Reference2: http://en.wikipedia.org/wiki/Standard_deviation </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
+ * Reference2: http://en.wikipedia.org/wiki/Standard_deviation <br/>
  * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 

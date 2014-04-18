@@ -33,7 +33,7 @@
  * Formula: slope = (1 / sum(m_i)) * (K*sum(f_i*m_i) - sum(f_i)*sum(m_i)) / (K*sum(f_i^2) - (sum(f_i))^2) <br/>
  * where i=1..K, f_i and m_i are the frequency and magnitude of bin i respectively. <br/>
  * Reference: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
  * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 

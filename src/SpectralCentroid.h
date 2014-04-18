@@ -25,14 +25,14 @@
  *
  * @section DESCRIPTION
  *
- * Feature name: Spectral Centroid </br>
- * Description: Compute the spectral centroid of each frame of the signal. </br>
- * If a frame is completely silent, a value of 0 is returned. </br>
- * Unit: Hz </br>
- * Formula: </br>
+ * Feature name: Spectral Centroid <br/>
+ * Description: Compute the spectral centroid of each frame of the signal. <br/>
+ * If a frame is completely silent, a value of 0 is returned. <br/>
+ * Unit: Hz <br/>
+ * Formula: <br/>
  * Reference: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
- * Reference2: http://en.wikipedia.org/wiki/Spectral_centroid </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
+ * Reference2: http://en.wikipedia.org/wiki/Spectral_centroid <br/>
  * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 

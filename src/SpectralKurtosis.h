@@ -40,8 +40,8 @@
  * and spread is the spectral spread (i.e. wieghted std. deviation) given
  * by spread = sqrt( sum( (f_i - c)^2 * m_i ) / sum (m_i) ) <br/>
  * Reference1: G. Peeters, B. L. Giordano, P. Susini, N. Misdariis, and S. McAdams. The timbre toolbox: Extracting audio
- * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. </br>
- * Reference2: http://en.wikipedia.org/wiki/Kurtosis </br>
+ * descriptors from musical signals. J. Acoust. Soc. Am., 130(5):2902–2916, 2011. <br/>
+ * Reference2: http://en.wikipedia.org/wiki/Kurtosis <br/>
  * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 
