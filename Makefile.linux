@@ -23,7 +23,7 @@ PLUGIN_SOURCES := $(SRCDIR)/AttackStartEndTimes.cpp \
 $(SRCDIR)/LogAttackTime.cpp \
 $(SRCDIR)/MFCC.cpp \
 $(SRCDIR)/RMS.cpp \
-$(SRCDIR)/SpecralCrest.cpp \
+$(SRCDIR)/SpectralCrest.cpp \
 $(SRCDIR)/SpectralCentroid.cpp \
 $(SRCDIR)/SpectralFlatness.cpp \
 $(SRCDIR)/SpectralFlux.cpp \
