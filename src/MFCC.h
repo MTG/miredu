@@ -31,7 +31,7 @@
  * Formula: see reference <br/>
  * Reference1: T. Ganchev, N. Fakotakis, and G. Kokkinakis. Comparative evaluation of various MFCC implementations on 
  * the speaker verification task. In 10th Int. Conf. on Speech and Computer, volume 1, pages 191–194, Patras, Greece, 
- * Oct. 2005.
+ * Oct. 2005. <br/>
  * Reference2: 
  * http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/ <br/>
  * Reference3:: Implementation based on the python mfcc implementation at: 
