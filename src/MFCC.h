@@ -1,37 +1,43 @@
-/*
-    MIR.EDU
-
-    A vamp plug-in library for teaching MIR.
-    Copyright (C) 2013-2014 Justin Salamon.
-
-    This file is part of MIR.EDU
-
-    MIR.EDU is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    MIR.EDU is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-    Feature info:
- 
-    Feature name: MFCC (Mel Frequency Cepstral Coefficients)
-    Description: Compute the MFCCs of each frame of the signal.
-    Unit: see reference
-    Formula: see reference
-    Reference: 
-    http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/
-    Credit: Implementation based on the python mfcc implementation at: 
-    https://github.com/jameslyons/python_speech_features/
-    The liftering function is based on the matlab implementation at (without the HTK liftering):
-    http://labrosa.ee.columbia.edu/matlab/rastamat/
+/**
+ * @file MFCC.h
+ * @author  Justin Salamon <justin.salamon@nyu.edu>
+ * @version 1.0
+ *
+ * @section LICENSE
+ *
+ * MIR.EDU
+ * 
+ * A vamp plug-in library for teaching MIR.
+ * Copyright (C) 2013-2014 Justin Salamon.
+ *
+ * MIR.EDU is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MIR.EDU is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @section DESCRIPTION
+ *
+ * Feature name: MFCC (Mel Frequency Cepstral Coefficients) <br/>
+ * Description: Compute the MFCCs of each frame of the signal. <br/>
+ * Unit: see reference <br/>
+ * Formula: see reference <br/>
+ * Reference1: T. Ganchev, N. Fakotakis, and G. Kokkinakis. Comparative evaluation of various MFCC implementations on 
+ * the speaker verification task. In 10th Int. Conf. on Speech and Computer, volume 1, pages 191–194, Patras, Greece, 
+ * Oct. 2005.
+ * Reference2: 
+ * http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/ <br/>
+ * Reference3:: Implementation based on the python mfcc implementation at: 
+ * https://github.com/jameslyons/python_speech_features/ <br/>
+ * Reference4: The liftering function is based on the matlab implementation at (without the HTK liftering):
+ * http://labrosa.ee.columbia.edu/matlab/rastamat/ <br/>
  */
 
 

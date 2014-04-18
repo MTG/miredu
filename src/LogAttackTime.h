@@ -1,39 +1,42 @@
-/*
-    MIR.EDU
-
-    A vamp plug-in library for teaching MIR.
-    Copyright (C) 2013-2014 Justin Salamon.
-
-    This file is part of MIR.EDU
-
-    MIR.EDU is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    MIR.EDU is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-    Feature info:
- 
-    Feature name: Log Attack Time
-    Description: Compute the logarithm (base 10) of the duration of the attack of the signal.
-    Unit: log10(seconds)
-    Formula: LogAttackTime = log10(t_end - t_start)
-    where t_start and t_end are the estimated start and end times (in seconds) of the attack
-    of the signal, which are estimated as explained in the reference.
-    NOTE: the timestamp of the returned value represents the start time of the attack.
-    NOTE 2: to visualise the attack start and end times use the 'Attack Start/End Times' pluging
-    NOTE 3: the accuracy of the estimation depends on the step (hop) size of the analysis, the
-    smaller the better.
-    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
-    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+/**
+ * @file LogAttackTime.h
+ * @author  Justin Salamon <justin.salamon@nyu.edu>
+ * @version 1.0
+ *
+ * @section LICENSE
+ *
+ * MIR.EDU
+ * 
+ * A vamp plug-in library for teaching MIR.
+ * Copyright (C) 2013-2014 Justin Salamon.
+ *
+ * MIR.EDU is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MIR.EDU is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @section DESCRIPTION
+ *
+ * Feature name: Log Attack Time <br/>
+ * Description: Compute the logarithm (base 10) of the duration of the attack of the signal. <br/>
+ * Unit: log10(seconds) <br/>
+ * Formula: LogAttackTime = log10(t_end - t_start) <br/>
+ * where t_start and t_end are the estimated start and end times (in seconds) of the attack <br/>
+ * of the signal, which are estimated as explained in the reference. <br/>
+ * NOTE: the timestamp of the returned value represents the start time of the attack. <br/>
+ * NOTE 2: to visualise the attack start and end times use the 'Attack Start/End Times' pluging <br/>
+ * NOTE 3: the accuracy of the estimation depends on the step (hop) size of the analysis, the <br/>
+ * smaller the better. <br/>
+ * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do <br/>
+ * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 
 

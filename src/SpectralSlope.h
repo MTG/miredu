@@ -1,36 +1,39 @@
-/*
-    MIR.EDU
-
-    A vamp plug-in library for teaching MIR.
-    Copyright (C) 2013-2014 Justin Salamon.
-
-    This file is part of MIR.EDU
-
-    MIR.EDU is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    MIR.EDU is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-    Feature info:
-
-    *** NOT WORKING YET, NOT INCLUDED IN LIBRARY ***
-    Feature name: Spectral Slope
-    Description: Compute the spectral slope of each frame of the signal.
-    If a frame is completely silent, a value of 0 is returned.
-    Unit: none
-    Formula: slope = (1 / sum(m_i)) * (K*sum(f_i*m_i) - sum(f_i)*sum(m_i)) / (K*sum(f_i^2) - (sum(f_i))^2)
-    where i=1..K, f_i and m_i are the frequency and magnitude of bin i respectively.
-    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
-    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+/**
+ * @file SpectralSlope.h
+ * @author  Justin Salamon <justin.salamon@nyu.edu>
+ * @version 1.0
+ *
+ * @section LICENSE
+ *
+ * MIR.EDU
+ * 
+ * A vamp plug-in library for teaching MIR.
+ * Copyright (C) 2013-2014 Justin Salamon.
+ *
+ * MIR.EDU is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MIR.EDU is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @section DESCRIPTION
+ *
+ * *** NOT WORKING YET, NOT INCLUDED IN LIBRARY *** <br/>
+ * Feature name: Spectral Slope <br/>
+ * Description: Compute the spectral slope of each frame of the signal. <br/>
+ * If a frame is completely silent, a value of 0 is returned. <br/>
+ * Unit: none <br/>
+ * Formula: slope = (1 / sum(m_i)) * (K*sum(f_i*m_i) - sum(f_i)*sum(m_i)) / (K*sum(f_i^2) - (sum(f_i))^2) <br/>
+ * where i=1..K, f_i and m_i are the frequency and magnitude of bin i respectively. <br/>
+ * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do <br/>
+ * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 
 // Remember to use a different guard symbol in each header!

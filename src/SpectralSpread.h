@@ -1,37 +1,42 @@
-/*
-    MIR.EDU
-
-    A vamp plug-in library for teaching MIR.
-    Copyright (C) 2013-2014 Justin Salamon.
-
-    This file is part of MIR.EDU
-
-    MIR.EDU is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    MIR.EDU is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-    Feature info:
-
-    Feature name: Spectral Spread
-    Description: Compute the spectral spread of each frame of the signal.
-    If a frame is completely silent, a value of 0 is returned.
-    Unit: Hz
-    Formula: computed as the weighted standard deviation,
-    spread = sqrt( sum( (f_i - c)^2 * m_i ) / sum (m_i) )
-    where f_i are frequencies in Hz and m_i are their respective
-    spectral magnitudes, and c is the centroid given by:
-    c = sum(f_i * m_i) / sum(m_i)
-    Reference:
+/**
+ * @file SpectralSpread.h
+ * @author  Justin Salamon <justin.salamon@nyu.edu>
+ * @version 1.0
+ *
+ * @section LICENSE
+ *
+ * MIR.EDU
+ * 
+ * A vamp plug-in library for teaching MIR.
+ * Copyright (C) 2013-2014 Justin Salamon.
+ *
+ * MIR.EDU is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MIR.EDU is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @section DESCRIPTION
+ *
+ * Feature name: Spectral Spread
+ * Description: Compute the spectral spread of each frame of the signal.
+ * If a frame is completely silent, a value of 0 is returned.
+ * Unit: Hz
+ * Formula: computed as the weighted standard deviation,
+ * spread = sqrt( sum( (f_i - c)^2 * m_i ) / sum (m_i) )
+ * where f_i are frequencies in Hz and m_i are their respective
+ * spectral magnitudes, and c is the centroid given by:
+ * c = sum(f_i * m_i) / sum(m_i)
+ * Reference1: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do <br/>
+ * Reference2: http://en.wikipedia.org/wiki/Standard_deviation </br>
+ * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 
 // Remember to use a different guard symbol in each header!

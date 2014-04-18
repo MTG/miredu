@@ -1,36 +1,39 @@
-/*
-    MIR.EDU
-
-    A vamp plug-in library for teaching MIR.
-    Copyright (C) 2013-2014 Justin Salamon.
-
-    This file is part of MIR.EDU
-
-    MIR.EDU is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    MIR.EDU is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-    Feature info:
-
-    Feature name: Spectral Crest
-    Description: Compute the spectral crest of each frame of the signal.
-    The crest is defined as the ratio between maximum specral magnitude
-    in the frame and the arithmetical mean of the spectral magnitudes.
-    Unit: none
-    Formula: Crest = max(m_i) / (sum(m_i)*(1/K))
-    where m_i are the spectral magnitudes.
-    Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do
-    PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011
+/**
+ * @file SpectralCrest.h
+ * @author  Justin Salamon <justin.salamon@nyu.edu>
+ * @version 1.0
+ *
+ * @section LICENSE
+ *
+ * MIR.EDU
+ * 
+ * A vamp plug-in library for teaching MIR.
+ * Copyright (C) 2013-2014 Justin Salamon.
+ *
+ * MIR.EDU is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MIR.EDU is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @section DESCRIPTION
+ *
+ * Feature name: Spectral Crest <br/>
+ * Description: Compute the spectral crest of each frame of the signal. 
+ * The crest is defined as the ratio between maximum specral magnitude
+ * in the frame and the arithmetical mean of the spectral magnitudes. <br/>
+ * Unit: none <br/>
+ * Formula: Crest = max(m_i) / (sum(m_i)*(1/K))
+ * where m_i are the spectral magnitudes. <br/>
+ * Reference: http://asadl.org/jasa/resource/1/jasman/v130/i5/p2902_s1/cart.do <br/>
+ * PDF: http://mt.music.mcgill.ca/mpcl/publications/peeters-giordano-susini-misdariis-mcadams-2011 <br/>
  */
 
 // Remember to use a different guard symbol in each header!
