@@ -238,29 +238,29 @@ SpectralCentroid::reset()
 SpectralCentroid::FeatureSet
 SpectralCentroid::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
-    // This is where we store the sum of spectral magnitudes
-    float magnitude_sum = 0.0f;
-    // This is where we store the sum of the weighted frequencies
+    // This is where we store the sum of the weighted frequencies (numerator)
     float weighted_frequency_sum = 0.0f;    
+    // This is where we store the sum of spectral magnitudes (denominator)
+    float magnitude_sum = 0.0f;
 
     // Iterate over all bins of the spectrum
     for (size_t i=0; i<m_blockSize; i+=2)
     {
-        // real component of the spectral bin
-        float breal = inputBuffers[0][i];
-        // imaginary component of the spectral bin
-        float bimag = inputBuffers[0][i+1]; 
         // Compute the magnitude from the complex spectrum
+        float breal = inputBuffers[0][i];
+        float bimag = inputBuffers[0][i+1]; 
         float magnitude = sqrt(breal*breal + bimag*bimag);
+        
         // Convert from bin number to frequency value in Hz
         float frequency = (i/2) * (float)m_inputSampleRate / (float)m_blockSize;
-        // Add the magnitude to the magnitude sum
-        magnitude_sum += magnitude;
-        // Add the weighted frequency to the wighted frequency sum
+        
+        // Add the weighted frequency to the numerator sum
         weighted_frequency_sum += frequency * magnitude;
+        // Add the magnitude to the denominator sum
+        magnitude_sum += magnitude;
     }
 
-    // Compute the spectral centroid as the wighted frequency mean
+    // Compute the spectral centroid
     float spectralcentroid;
     // If there are no non-zero bin magnitudes in the frame, return 0
     if (magnitude_sum == 0)

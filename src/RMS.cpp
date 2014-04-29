@@ -239,28 +239,29 @@ RMS::reset()
 RMS::FeatureSet
 RMS::process(const float *const *inputBuffers, Vamp::RealTime timestamp)
 {
-    // Do actual work!
+    // This is where we store the sum of
+    // squared energy values
     float energy = 0.0f;
 
-    size_t i = 0; // note: same type as m_blockSize
-
-    while (i < m_blockSize)
+    // Add the squared energy of each sample in the frame
+    for (size_t i=0; i < m_blockSize; i++)
     {
         float sample = inputBuffers[0][i];
         energy += sample * sample;
-        ++i;
     }
 
+    // Compute the mean by dividing by the frame size
     float mean_energy = energy / m_blockSize;
+    // Compute the RMS by taking the square root
     float rms = sqrt(mean_energy);
 
+    // Return the RMS
     Feature f;
     f.hasTimestamp = false;
     f.values.push_back(rms);
-
+    
     FeatureSet fs;
     fs[0].push_back(f);
-
     return fs;
 }
 
