@@ -1,6 +1,26 @@
 MIR.EDU
 =======
 
+MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
+descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
+documented code for learning about audio descriptors (RMS, log attack-time, spectral flux, etc.).
+
+MIR.EDU is:
+- open source
+- simple to understand
+- simple to build / install
+- easy to visualise using Sonic Visualizer
+- east to use for batch processing using Sonic Annotator
+
+MIR.EDU is not:
+- highly optimized
+- comprehensive
+- state of the art
+
+
+LICENSE
+=======
+
 A vamp plug-in library for teaching MIR.
 Copyright (C) 2013-2014 Justin Salamon.
 
@@ -17,6 +37,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
 CONTACT
 =======
 
@@ -25,24 +46,13 @@ Justin Salamon
 email: <justin.salamon@nyu.edu>  
 web: www.justinsalamon.com
 
-DESCRIPTION
-===========
 
-MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
-descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
-documented code for learning about audio descriptors (RMS, log attack-time, spectral flux, etc.).
+ACKNOWLEDGMENTS
+===============
+MIR.EDU is supported by:
+- Universitat Pompeu Fabra
+- New York University
 
-MIR.EDU is:
-- open source
-- simple to understand
-- simple to build / install
-- easy to visualise using Sonic Visualizer
-- east to use for batch processing using Sonic Annotator
-
-MIR.EDU is not:
-- highly optimized
-- comprehensive
-- state of the art
 
 BUILD
 =====
