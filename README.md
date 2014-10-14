@@ -18,26 +18,6 @@ MIR.EDU is not:
 - state of the art
 
 
-LICENSE
-=======
-
-A vamp plug-in library for teaching MIR.
-Copyright (C) 2013-2014 Justin Salamon.
-
-MIR.EDU is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-at your option) any later version.
-
-MIR.EDU is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
 CONTACT
 =======
 
@@ -45,13 +25,6 @@ MIR.EDU is written and maintained by:
 Justin Salamon  
 email: <justin.salamon@nyu.edu>  
 web: www.justinsalamon.com
-
-
-ACKNOWLEDGMENTS
-===============
-MIR.EDU is supported by:
-- Universitat Pompeu Fabra
-- New York University
 
 
 BUILD
@@ -120,9 +93,6 @@ OSX & Linux:
 	mac:miredu justin$ make
 	```
 
-
-
-
 INSTALLATION
 ============
 
@@ -172,6 +142,7 @@ If you're using the pre-compiled library:
 	linux:dev justin$ cd miredu  
 	linux:miredu justin$
 	linux:miredu justin$ cp builds/linux64/mir-edu.so mir-edu.cat mir-edu.n3 ~/vamp/
+	```
 
 Windows
 
@@ -183,3 +154,30 @@ If you're using the pre-compiled library:
 * 64 bit: C:\Program Files (x86)\Vamp Plugins\
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a334029ff1b8a2cb72aa7794a44c3906 "githalytics.com")](http://githalytics.com/justinsalamon/miredu)
+
+
+ACKNOWLEDGMENTS
+===============
+MIR.EDU is supported by:
+- Universitat Pompeu Fabra
+- New York University
+
+
+LICENSE
+=======
+
+A vamp plug-in library for teaching MIR.
+Copyright (C) 2013-2014 Justin Salamon.
+
+MIR.EDU is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+at your option) any later version.
+
+MIR.EDU is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
