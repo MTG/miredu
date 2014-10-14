@@ -6,16 +6,16 @@ descriptors useful for teaching MIR. The idea is to provide a simple library wit
 documented code for learning about audio descriptors (RMS, log attack-time, spectral flux, etc.).
 
 MIR.EDU is:
-- open source
-- simple to understand
-- simple to build / install
-- easy to visualise using Sonic Visualizer
-- east to use for batch processing using Sonic Annotator
+- Open source
+- Simple to understand
+- Simple to build / install
+- Easy to visualise using Sonic Visualizer
+- Easy to use for batch processing using Sonic Annotator
 
 MIR.EDU is not:
-- highly optimized
-- comprehensive
-- state of the art
+- Optimized
+- Comprehensive
+- State of the art
 
 
 CONTACT
