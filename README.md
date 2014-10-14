@@ -153,8 +153,6 @@ If you're using the pre-compiled library:
 * 32 bit: C:\Program Files\Vamp Plugins\
 * 64 bit: C:\Program Files (x86)\Vamp Plugins\
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a334029ff1b8a2cb72aa7794a44c3906 "githalytics.com")](http://githalytics.com/justinsalamon/miredu)
-
 
 ACKNOWLEDGMENTS
 ===============
