@@ -157,8 +157,8 @@ If you're using the pre-compiled library:
 ACKNOWLEDGMENTS
 ===============
 MIR.EDU is supported by:
-- Universitat Pompeu Fabra
-- New York University
+- [Music Technology Group](http://mtg.upf.edu), [Universitat Pompeu Fabra](http://www.upf.edu)
+- [New York University](http://www.nyu.edu)
 
 
 LICENSE
