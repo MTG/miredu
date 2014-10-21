@@ -27,6 +27,13 @@ email: <justin.salamon@nyu.edu>
 web: www.justinsalamon.com
 
 
+ACKNOWLEDGMENTS
+===============
+MIR.EDU is supported by:
+- [Music Technology Group](http://mtg.upf.edu), [Universitat Pompeu Fabra](http://www.upf.edu)
+- [New York University](http://www.nyu.edu)
+
+
 BUILD
 =====
 
@@ -152,13 +159,6 @@ If you're using the pre-compiled library:
 
 * 32 bit: C:\Program Files\Vamp Plugins\
 * 64 bit: C:\Program Files (x86)\Vamp Plugins\
-
-
-ACKNOWLEDGMENTS
-===============
-MIR.EDU is supported by:
-- [Music Technology Group](http://mtg.upf.edu), [Universitat Pompeu Fabra](http://www.upf.edu)
-- [New York University](http://www.nyu.edu)
 
 
 LICENSE
