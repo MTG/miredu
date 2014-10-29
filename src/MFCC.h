@@ -48,6 +48,7 @@
 #include <cmath>
 #include <ostream>
 #include <vector>
+#include <limits>
 #include <vamp-sdk/Plugin.h>
 
 using std::string;
