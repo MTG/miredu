@@ -1,21 +1,22 @@
 MIR.EDU
 =======
 
-A vamp plug-in library for teaching MIR.
-Copyright (C) 2013-2014 Justin Salamon.
+MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
+descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
+documented code for learning about audio descriptors (RMS, log attack-time, spectral flux, etc.).
 
-MIR.EDU is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-at your option) any later version.
+MIR.EDU is:
+- Open source
+- Simple to understand
+- Simple to build / install
+- Easy to visualise using Sonic Visualizer
+- Easy to use for batch processing using Sonic Annotator
 
-MIR.EDU is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+MIR.EDU is not:
+- Optimized
+- Comprehensive
+- State of the art
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 CONTACT
 =======
@@ -25,24 +26,13 @@ Justin Salamon
 email: <justin.salamon@nyu.edu>  
 web: www.justinsalamon.com
 
-DESCRIPTION
-===========
 
-MIR.EDU is an open source vamp plug-in library written in C++ which implements a basic set of 
-descriptors useful for teaching MIR. The idea is to provide a simple library with clear and well 
-documented code for learning about audio descriptors (RMS, log attack-time, spectral flux, etc.).
+ACKNOWLEDGMENTS
+===============
+MIR.EDU is supported by:
+- [Music Technology Group](http://mtg.upf.edu), [Universitat Pompeu Fabra](http://www.upf.edu)
+- [New York University](http://www.nyu.edu)
 
-MIR.EDU is:
-- open source
-- simple to understand
-- simple to build / install
-- easy to visualise using Sonic Visualizer
-- east to use for batch processing using Sonic Annotator
-
-MIR.EDU is not:
-- highly optimized
-- comprehensive
-- state of the art
 
 BUILD
 =====
@@ -110,9 +100,6 @@ OSX & Linux:
 	mac:miredu justin$ make
 	```
 
-
-
-
 INSTALLATION
 ============
 
@@ -162,6 +149,7 @@ If you're using the pre-compiled library:
 	linux:dev justin$ cd miredu  
 	linux:miredu justin$
 	linux:miredu justin$ cp builds/linux64/mir-edu.so mir-edu.cat mir-edu.n3 ~/vamp/
+	```
 
 Windows
 
@@ -172,4 +160,22 @@ If you're using the pre-compiled library:
 * 32 bit: C:\Program Files\Vamp Plugins\
 * 64 bit: C:\Program Files (x86)\Vamp Plugins\
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a334029ff1b8a2cb72aa7794a44c3906 "githalytics.com")](http://githalytics.com/justinsalamon/miredu)
+
+LICENSE
+=======
+
+A vamp plug-in library for teaching MIR.
+Copyright (C) 2013-2014 Justin Salamon.
+
+MIR.EDU is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+at your option) any later version.
+
+MIR.EDU is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
