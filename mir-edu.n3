@@ -10,11 +10,17 @@
 @prefix :         <#> .
 
 <>  a   vamp:PluginDescription ;
-    foaf:maker          <http://www.justinsalamon.com/> ;
+    foaf:maker          :maker ;
     foaf:maker          <http://www.vamp-plugins.org/doap.rdf#template-generator> ;
     foaf:primaryTopic   <http://vamp-plugins.org/rdf/plugins/mir-edu> .
 
-:mir-edu a  vamp:PluginLibrary ;
+:maker
+    foaf:page          <http://www.justinsalamon.com/> ;
+    foaf:name	       "Justin Salamon" ;
+    foaf:logo <http://vamp-plugins.org/rdf/plugins/makers/upf.png> ;
+    .
+
+plugbase:library a  vamp:PluginLibrary ;
     vamp:identifier "mir-edu"  ; 
     vamp:available_plugin plugbase:attackstartendtimes ; 
     vamp:available_plugin plugbase:logattacktime ; 
@@ -29,8 +35,12 @@
     vamp:available_plugin plugbase:spectralskewness ; 
     vamp:available_plugin plugbase:spectralspread ; 
     vamp:available_plugin plugbase:temporalcentroid ; 
-    vamp:available_plugin plugbase:zerocrossingrate ; 
+    vamp:available_plugin plugbase:zerocrossingrate ;
+    foaf:maker :maker ;
     foaf:page <http://github.com/MTG/miredu> ;
+    dc:title "MIR.EDU" ;
+    dc:description """An open source Vamp plug-in library written in C++ which implements a basic set of descriptors useful for teaching MIR""" ;
+    vamp:has_source true ;
     .
 
 plugbase:attackstartendtimes a   vamp:Plugin ;
